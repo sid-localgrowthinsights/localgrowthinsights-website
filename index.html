@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Local Growth Insights — The data behind why dentists rank where they rank</title>
+<meta name="description" content="We analyze US dental practices' Google Business Profiles and deliver a 12-page report showing exactly why you rank where you do — and the 30-day plan to fix it. $97, delivered in 48 hours.">
+<meta property="og:title" content="Local Growth Insights — GBP audits for US dental practices">
+<meta property="og:description" content="A 12-page audit of your dental practice's Google visibility. $97. Delivered in 48 hours.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://localgrowthinsights.com">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --ink: #0A0E12;
+    --ink-2: #1A1F26;
+    --ink-3: #4A5360;
+    --ink-4: #7A8290;
+    --paper: #FAFAF7;
+    --paper-2: #F2F1EC;
+    --line: #D9D7CE;
+    --accent: #0F3F2E;
+    --accent-2: #C2410C;
+    --highlight: #FEF3C7;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Geist', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+.container-narrow {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+/* ======== NAVIGATION ======== */
+nav {
+    border-bottom: 1px solid var(--line);
+    background: var(--paper);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(8px);
+    background: rgba(250, 250, 247, 0.95);
+}
+
+.nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 32px;
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-mark {
+    width: 28px;
+    height: 28px;
+    background: var(--accent);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--paper);
+    font-family: 'Geist Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.nav-links {
+    display: flex;
+    gap: 36px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--ink-3);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.15s;
+}
+
+.nav-links a:hover { color: var(--ink); }
+
+.nav-cta {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 10px 18px;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 14px;
+    transition: background 0.15s;
+}
+
+.nav-cta:hover {
+    background: var(--ink-2);
+    color: var(--paper) !important;
+}
+
+@media (max-width: 768px) {
+    .nav-links a:not(.nav-cta) { display: none; }
+}
+
+/* ======== HERO ======== */
+.hero {
+    padding: 80px 0 60px;
+    border-bottom: 1px solid var(--line);
+}
+
+.eyebrow {
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    color: var(--accent-2);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+    font-weight: 500;
+}
+
+h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(38px, 5vw, 62px);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    font-weight: 500;
+    margin-bottom: 28px;
+    max-width: 900px;
+}
+
+h1 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+}
+
+.hero-sub {
+    font-size: 20px;
+    line-height: 1.55;
+    color: var(--ink-3);
+    max-width: 640px;
+    margin-bottom: 40px;
+}
+
+.hero-sub strong { color: var(--ink); font-weight: 500; }
+
+.cta-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 16px 28px;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.15s, background 0.15s;
+    border: 1px solid var(--ink);
+}
+
+.btn-primary:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+}
+
+.btn-primary .arrow {
+    transition: transform 0.2s;
+    font-family: 'Geist Mono', monospace;
+}
+.btn-primary:hover .arrow { transform: translateX(3px); }
+
+.btn-secondary {
+    color: var(--ink);
+    padding: 16px 8px;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    transition: border-color 0.15s;
+}
+.btn-secondary:hover { border-color: var(--accent-2); color: var(--accent-2); }
+
+/* ======== DATA STRIP ======== */
+.data-strip {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 60px 0;
+}
+
+.data-strip-inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+}
+
+.data-stat .num {
+    font-family: 'Fraunces', serif;
+    font-size: 48px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--paper);
+}
+
+.data-stat .num em {
+    font-family: 'Geist Mono', monospace;
+    font-size: 20px;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--ink-4);
+    margin-left: 4px;
+}
+
+.data-stat .label {
+    font-size: 13px;
+    color: var(--ink-4);
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .data-strip-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .data-stat .num { font-size: 36px; }
+}
+
+/* ======== SECTION DEFAULTS ======== */
+section { padding: 80px 0; }
+section.tight { padding: 60px 0; }
+
+.section-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    color: var(--accent-2);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 16px;
+    font-weight: 500;
+}
+
+h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(30px, 4vw, 44px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+    margin-bottom: 24px;
+    max-width: 800px;
+}
+
+h2 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+}
+
+.lead {
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink-3);
+    max-width: 680px;
+    margin-bottom: 48px;
+}
+
+/* ======== PROBLEM SECTION WITH DATA TABLE ======== */
+.problem {
+    background: var(--paper-2);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.signal-table {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 40px;
+}
+
+.signal-header {
+    display: grid;
+    grid-template-columns: 60px 1fr 140px 140px;
+    padding: 16px 24px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+}
+
+.signal-row {
+    display: grid;
+    grid-template-columns: 60px 1fr 140px 140px;
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--line);
+    font-size: 15px;
+    align-items: center;
+}
+
+.signal-row:last-child { border-bottom: none; }
+
+.signal-row .num {
+    font-family: 'Geist Mono', monospace;
+    color: var(--ink-4);
+    font-size: 13px;
+}
+
+.signal-row .name { color: var(--ink); font-weight: 500; }
+
+.signal-row .avg {
+    font-family: 'Geist Mono', monospace;
+    color: var(--ink-3);
+    font-size: 14px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.badge-fail {
+    background: #FEE2E2;
+    color: #991B1B;
+}
+
+.badge-pass {
+    background: #D1FAE5;
+    color: #065F46;
+}
+
+.signal-footnote {
+    margin-top: 20px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-4);
+    letter-spacing: 0.02em;
+}
+
+@media (max-width: 768px) {
+    .signal-header { display: none; }
+    .signal-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        padding: 16px;
+    }
+    .signal-row .num { font-size: 12px; }
+}
+
+/* ======== REPORT PREVIEW ======== */
+.report-preview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+@media (max-width: 900px) {
+    .report-preview { grid-template-columns: 1fr; gap: 40px; }
+}
+
+.report-mock {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 28px;
+    box-shadow: 0 20px 50px -20px rgba(10, 14, 18, 0.15);
+    position: relative;
+}
+
+.report-mock::before {
+    content: 'SAMPLE';
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    color: var(--accent-2);
+    letter-spacing: 0.15em;
+    font-weight: 600;
+}
+
+.report-mock-header {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.report-mock-header .label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-4);
+    margin-bottom: 6px;
+}
+
+.report-mock-header .practice {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+}
+
+.report-mock-header .city {
+    font-size: 13px;
+    color: var(--ink-3);
+    margin-top: 2px;
+}
+
+.score-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.score-box {
+    background: var(--paper-2);
+    padding: 16px;
+    border-radius: 4px;
+}
+
+.score-box .lbl {
+    font-size: 11px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+    font-family: 'Geist Mono', monospace;
+}
+
+.score-box .val {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+}
+
+.score-box.bad .val { color: #B91C1C; }
+.score-box.good .val { color: #047857; }
+
+.gap-list { font-size: 13px; }
+
+.gap-list .item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.gap-list .item:last-child { border-bottom: none; }
+
+.gap-list .item .you {
+    font-family: 'Geist Mono', monospace;
+    color: #B91C1C;
+    font-size: 12px;
+}
+
+.gap-list .item .them {
+    font-family: 'Geist Mono', monospace;
+    color: #047857;
+    font-size: 12px;
+}
+
+/* ======== PRICING ======== */
+.pricing {
+    background: var(--ink);
+    color: var(--paper);
+}
+
+.pricing .section-label { color: #F59E0B; }
+
+.pricing h2 { color: var(--paper); }
+.pricing h2 em { color: #F59E0B; }
+
+.pricing .lead { color: var(--ink-4); }
+
+.tier-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+}
+
+@media (max-width: 900px) { .tier-grid { grid-template-columns: 1fr; } }
+
+.tier {
+    background: var(--ink-2);
+    border: 1px solid #2A3138;
+    border-radius: 6px;
+    padding: 32px;
+    position: relative;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.tier:hover {
+    transform: translateY(-2px);
+    border-color: #F59E0B;
+}
+
+.tier.featured {
+    border-color: #F59E0B;
+    background: #1F2A1F;
+}
+
+.tier.featured::before {
+    content: 'MOST POPULAR';
+    position: absolute;
+    top: -10px;
+    left: 32px;
+    background: #F59E0B;
+    color: var(--ink);
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    padding: 4px 10px;
+    border-radius: 3px;
+    font-weight: 600;
+}
+
+.tier-name {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--paper);
+    margin-bottom: 8px;
+}
+
+.tier-desc {
+    font-size: 13px;
+    color: var(--ink-4);
+    margin-bottom: 24px;
+    min-height: 40px;
+}
+
+.tier-price {
+    font-family: 'Fraunces', serif;
+    font-size: 44px;
+    line-height: 1;
+    color: var(--paper);
+    font-weight: 500;
+    margin-bottom: 4px;
+    letter-spacing: -0.02em;
+}
+
+.tier-price .unit {
+    font-family: 'Geist Mono', monospace;
+    font-size: 14px;
+    color: var(--ink-4);
+    font-weight: 400;
+}
+
+.tier-billing {
+    font-size: 12px;
+    color: var(--ink-4);
+    font-family: 'Geist Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 28px;
+}
+
+.tier-features { list-style: none; margin-bottom: 28px; }
+
+.tier-features li {
+    font-size: 14px;
+    color: var(--paper);
+    padding: 8px 0;
+    padding-left: 24px;
+    position: relative;
+    line-height: 1.5;
+    border-bottom: 1px solid #2A3138;
+}
+
+.tier-features li:last-child { border-bottom: none; }
+
+.tier-features li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #F59E0B;
+    font-family: 'Geist Mono', monospace;
+}
+
+.tier-cta {
+    display: block;
+    background: var(--paper);
+    color: var(--ink);
+    padding: 14px 20px;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.15s;
+}
+
+.tier.featured .tier-cta { background: #F59E0B; }
+.tier-cta:hover { background: var(--accent-2); color: var(--paper); }
+
+/* ======== GRADE TOOL PROMO ======== */
+.grade-promo {
+    background: var(--highlight);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 48px 0;
+}
+
+.grade-promo-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+
+.grade-promo h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+}
+
+.grade-promo p {
+    font-size: 15px;
+    color: var(--ink-2);
+}
+
+.grade-promo .free {
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    color: var(--accent-2);
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+/* ======== FAQ ======== */
+.faq-list {
+    border-top: 1px solid var(--line);
+    margin-top: 40px;
+}
+
+.faq-item {
+    border-bottom: 1px solid var(--line);
+    padding: 24px 0;
+}
+
+.faq-q {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.faq-q::after {
+    content: '+';
+    font-family: 'Geist Mono', monospace;
+    font-size: 20px;
+    color: var(--accent-2);
+    font-weight: 400;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+}
+
+.faq-item.open .faq-q::after {
+    transform: rotate(45deg);
+}
+
+.faq-a {
+    font-size: 16px;
+    color: var(--ink-3);
+    line-height: 1.6;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-item.open .faq-a {
+    max-height: 500px;
+    padding-top: 8px;
+}
+
+/* ======== FINAL CTA ======== */
+.final-cta {
+    background: var(--accent);
+    color: var(--paper);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.final-cta h2 {
+    color: var(--paper);
+    max-width: 720px;
+    margin: 0 auto 24px;
+}
+
+.final-cta h2 em { color: #FCD34D; }
+
+.final-cta p {
+    font-size: 18px;
+    color: rgba(250, 250, 247, 0.8);
+    margin-bottom: 36px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.final-cta .btn-primary {
+    background: var(--paper);
+    color: var(--ink);
+    border-color: var(--paper);
+}
+.final-cta .btn-primary:hover {
+    background: #FCD34D;
+    border-color: #FCD34D;
+    color: var(--ink);
+}
+
+/* ======== FOOTER ======== */
+footer {
+    background: var(--ink);
+    color: var(--ink-4);
+    padding: 60px 0 40px;
+    font-size: 14px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 48px;
+}
+
+@media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+
+.footer-brand .logo {
+    color: var(--paper);
+    margin-bottom: 16px;
+}
+
+.footer-brand p {
+    color: var(--ink-4);
+    max-width: 320px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-col h4 {
+    color: var(--paper);
+    font-size: 13px;
+    font-family: 'Geist Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.footer-col ul { list-style: none; }
+
+.footer-col li {
+    margin-bottom: 10px;
+}
+
+.footer-col a {
+    color: var(--ink-4);
+    text-decoration: none;
+    transition: color 0.15s;
+}
+
+.footer-col a:hover { color: var(--paper); }
+
+.footer-bottom {
+    border-top: 1px solid #2A3138;
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 13px;
+}
+
+.footer-bottom a { color: var(--ink-4); text-decoration: none; }
+.footer-bottom a:hover { color: var(--paper); }
+
+/* ======== ANIMATIONS ======== */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero .eyebrow { animation: fadeInUp 0.6s ease 0.1s backwards; }
+.hero h1 { animation: fadeInUp 0.6s ease 0.2s backwards; }
+.hero .hero-sub { animation: fadeInUp 0.6s ease 0.3s backwards; }
+.hero .cta-row { animation: fadeInUp 0.6s ease 0.4s backwards; }
+
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo">
+            <div class="logo-mark">L</div>
+            Local Growth Insights
+        </a>
+        <div class="nav-links">
+            <a href="#how">How it works</a>
+            <a href="#pricing">Pricing</a>
+            <a href="grade.html">Free grade</a>
+            <a href="insights/index.html">Insights</a>
+            <a href="about.html">About</a>
+            <a href="report.html" class="nav-cta">Get the audit →</a>
+        </div>
+    </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+    <div class="container">
+        <div class="eyebrow">For US dental practices · Google Business Profile audits</div>
+        <h1>The data behind <em>why dentists rank</em> where they rank on Google.</h1>
+        <p class="hero-sub">
+            We analyze your Google Business Profile across <strong>14 ranking signals</strong>, compare you to the top 5 dentists in your city, and deliver a <strong>12-page report</strong> showing exactly what's costing you new patients — and the 30-day plan to fix it.
+        </p>
+        <div class="cta-row">
+            <a href="report.html" class="btn-primary">Get your audit — $97 <span class="arrow">→</span></a>
+            <a href="grade.html" class="btn-secondary">Or get your free grade first</a>
+        </div>
+    </div>
+</header>
+
+<!-- ============ DATA STRIP ============ -->
+<section class="data-strip">
+    <div class="container">
+        <div class="data-strip-inner">
+            <div class="data-stat">
+                <div class="num">14<em>signals</em></div>
+                <div class="label">Ranking factors analyzed across your profile — the ones Google actually weights for local dental searches.</div>
+            </div>
+            <div class="data-stat">
+                <div class="num">73<em>%</em></div>
+                <div class="label">Of US dental practices we've audited fail at least 7 of the 14 signals — usually the same ones.</div>
+            </div>
+            <div class="data-stat">
+                <div class="num">48<em>hrs</em></div>
+                <div class="label">From order to delivery. Every report is custom-built for your specific practice and city.</div>
+            </div>
+            <div class="data-stat">
+                <div class="num">$97<em>flat</em></div>
+                <div class="label">One-time. No retainer, no upsell gate. If the report is useful, great. If not, you've lost $97.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ PROBLEM ============ -->
+<section class="problem" id="how">
+    <div class="container">
+        <div class="section-label">01 · The ranking problem</div>
+        <h2>Most dentists think Google ranking is <em>random.</em> It isn't.</h2>
+        <p class="lead">
+            There are 14 signals Google uses to rank local businesses on Maps. Dentists typically get 4 right. The other 10 are usually fixable within 30 days — if you know which ones to focus on and in what order.
+        </p>
+
+        <div class="signal-table">
+            <div class="signal-header">
+                <div>#</div>
+                <div>Ranking signal</div>
+                <div>Typical dentist</div>
+                <div>Top-ranked</div>
+            </div>
+            <div class="signal-row">
+                <div class="num">01</div>
+                <div class="name">Primary category selection</div>
+                <div class="avg">1 category</div>
+                <div><span class="badge badge-pass">4 categories</span></div>
+            </div>
+            <div class="signal-row">
+                <div class="num">02</div>
+                <div class="name">Total reviews (past 12 months)</div>
+                <div class="avg">19 reviews</div>
+                <div><span class="badge badge-pass">52+ reviews</span></div>
+            </div>
+            <div class="signal-row">
+                <div class="num">03</div>
+                <div class="name">Review response rate</div>
+                <div class="avg">22%</div>
+                <div><span class="badge badge-pass">98%</span></div>
+            </div>
+            <div class="signal-row">
+                <div class="num">04</div>
+                <div class="name">Google Posts (last 30 days)</div>
+                <div class="avg"><span class="badge badge-fail">0 posts</span></div>
+                <div><span class="badge badge-pass">6-8 posts</span></div>
+            </div>
+            <div class="signal-row">
+                <div class="num">05</div>
+                <div class="name">Photo count &amp; freshness</div>
+                <div class="avg">14 photos</div>
+                <div><span class="badge badge-pass">80+ photos</span></div>
+            </div>
+            <div class="signal-row">
+                <div class="num">06</div>
+                <div class="name">Q&amp;A section activity</div>
+                <div class="avg"><span class="badge badge-fail">Ignored</span></div>
+                <div><span class="badge badge-pass">12+ answered</span></div>
+            </div>
+            <div class="signal-row">
+                <div class="num">07</div>
+                <div class="name">Products &amp; services listed</div>
+                <div class="avg">0-2 items</div>
+                <div><span class="badge badge-pass">15+ items</span></div>
+            </div>
+            <div class="signal-row">
+                <div class="num">08</div>
+                <div class="name">Website NAP consistency</div>
+                <div class="avg"><span class="badge badge-fail">3+ mismatches</span></div>
+                <div><span class="badge badge-pass">Perfect</span></div>
+            </div>
+        </div>
+        <div class="signal-footnote">↳ Plus 6 more signals covered in the full report. Based on 4,187 US dental practices analyzed. <a href="insights/14-signals.html" style="color: var(--accent-2); text-decoration: underline; text-underline-offset: 3px;">Read the full research analysis →</a></div>
+    </div>
+</section>
+
+<!-- ============ REPORT PREVIEW ============ -->
+<section>
+    <div class="container">
+        <div class="section-label">02 · What you receive</div>
+        <h2>A <em>12-page report</em> specific to your practice. Not a template.</h2>
+        <p class="lead">
+            Every report is built from scratch for one practice. We pull live data on your profile, your top 5 competitors, and the local search terms in your city. Here's a preview of what lands in your inbox within 48 hours.
+        </p>
+
+        <div class="report-preview">
+            <div class="report-mock">
+                <div class="report-mock-header">
+                    <div class="label">Audit report · page 3 of 12</div>
+                    <div class="practice">Smile Bright Family Dental</div>
+                    <div class="city">Fort Worth, TX · ranked #5 for "dentist fort worth"</div>
+                </div>
+                <div class="score-grid">
+                    <div class="score-box bad">
+                        <div class="lbl">Your GBP score</div>
+                        <div class="val">C−</div>
+                    </div>
+                    <div class="score-box good">
+                        <div class="lbl">Top competitor</div>
+                        <div class="val">A+</div>
+                    </div>
+                </div>
+                <div class="gap-list">
+                    <div class="item">
+                        <div>Total reviews</div>
+                        <div><span class="you">You: 19</span> → <span class="them">Them: 142</span></div>
+                    </div>
+                    <div class="item">
+                        <div>Review velocity (90d)</div>
+                        <div><span class="you">You: 2</span> → <span class="them">Them: 18</span></div>
+                    </div>
+                    <div class="item">
+                        <div>Categories set</div>
+                        <div><span class="you">You: 1</span> → <span class="them">Them: 4</span></div>
+                    </div>
+                    <div class="item">
+                        <div>Posts (last 30d)</div>
+                        <div><span class="you">You: 0</span> → <span class="them">Them: 8</span></div>
+                    </div>
+                    <div class="item">
+                        <div>Photos</div>
+                        <div><span class="you">You: 14</span> → <span class="them">Them: 92</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 style="font-family: 'Fraunces', serif; font-size: 26px; font-weight: 500; margin-bottom: 20px; letter-spacing: -0.01em;">What's actually in the report</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 15px;"><strong>Pages 1-3:</strong> Your current rankings across the 10 highest-value keywords in your city.</li>
+                    <li style="padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 15px;"><strong>Pages 4-6:</strong> Top 5 competitor breakdown — what they're doing that you aren't.</li>
+                    <li style="padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 15px;"><strong>Pages 7-9:</strong> The 14 signals scored for your profile. Red, yellow, green.</li>
+                    <li style="padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 15px;"><strong>Pages 10-11:</strong> 30-day action checklist, prioritized by impact vs. effort.</li>
+                    <li style="padding: 12px 0; font-size: 15px;"><strong>Page 12:</strong> Sample post templates, review response scripts, and category recommendations.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ GRADE PROMO ============ -->
+<section class="grade-promo">
+    <div class="container">
+        <div class="grade-promo-inner">
+            <div>
+                <div class="free">Free · 60 seconds</div>
+                <h3>Not sure if you need the full audit?</h3>
+                <p>Run our free grader first. Enter your practice name, get a 1-page preview.</p>
+            </div>
+            <a href="grade.html" class="btn-primary" style="background: var(--ink); border-color: var(--ink);">
+                Grade my profile <span class="arrow">→</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="pricing" id="pricing">
+    <div class="container">
+        <div class="section-label">03 · Pricing</div>
+        <h2>One service. <em>Three commitment levels.</em></h2>
+        <p class="lead">No free trials, no "contact for pricing," no retainer lock-ins on anything below $1,497/mo.</p>
+
+        <div class="tier-grid">
+            <div class="tier">
+                <div class="tier-name">The Audit</div>
+                <div class="tier-desc">A diagnostic report. You implement.</div>
+                <div class="tier-price">$97<span class="unit"> once</span></div>
+                <div class="tier-billing">One-time · 48h delivery</div>
+                <ul class="tier-features">
+                    <li>12-page custom report</li>
+                    <li>14-signal GBP scorecard</li>
+                    <li>Top 5 competitor analysis</li>
+                    <li>30-day action checklist</li>
+                    <li>Sample post &amp; review templates</li>
+                </ul>
+                <a href="report.html" class="tier-cta">Order the audit →</a>
+            </div>
+
+            <div class="tier featured">
+                <div class="tier-name">Audit + Basic Fix</div>
+                <div class="tier-desc">We run the audit and execute the top 10 fixes for you.</div>
+                <div class="tier-price">$249<span class="unit"> once</span></div>
+                <div class="tier-billing">One-time · 7-day turnaround</div>
+                <ul class="tier-features">
+                    <li>Everything in The Audit</li>
+                    <li>Category corrections</li>
+                    <li>Business description rewrite</li>
+                    <li>Q&amp;A seeding (10 questions)</li>
+                    <li>Initial Google Posts (4 posts)</li>
+                    <li>Review response templates loaded</li>
+                </ul>
+                <a href="services.html#basic-fix" class="tier-cta">Book basic fix →</a>
+            </div>
+
+            <div class="tier">
+                <div class="tier-name">Local Dominance</div>
+                <div class="tier-desc">Ongoing management. We run your GBP like a team member would.</div>
+                <div class="tier-price">$1,497<span class="unit"> /mo</span></div>
+                <div class="tier-billing">Monthly · Cancel anytime</div>
+                <ul class="tier-features">
+                    <li>Weekly Google Posts</li>
+                    <li>Review monitoring &amp; response</li>
+                    <li>Monthly ranking reports</li>
+                    <li>Competitor watch &amp; alerts</li>
+                    <li>Dedicated Slack channel</li>
+                    <li>Quarterly strategy calls</li>
+                </ul>
+                <a href="services.html#dominance" class="tier-cta">See full scope →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+    <div class="container-narrow">
+        <div class="section-label">04 · Questions we actually get asked</div>
+        <h2>Before you buy, the <em>skeptical questions</em>.</h2>
+
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-q">How does your methodology compare to standard SEO agency analyses?</div>
+                <div class="faq-a">Standard agency audits typically cover 4-6 surface-level signals: review count, posting activity, photo count, basic keyword presence. Our 14-signal framework covers all of those plus 8 deeper signals — review velocity (not just count), category structure depth, NAP consistency across the web, Q&amp;A engagement, profile completeness scoring, competitive triangulation, and more. The expanded scope is why our reports surface issues that surface-level audits miss.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">How is $97 even possible? What's the catch?</div>
+                <div class="faq-a">There's no catch. The report is the product. We built the analysis system once — it ingests your GBP data, scrapes your competitors, and generates the PDF. The marginal cost to produce one more report is roughly $3. $97 is what keeps us profitable at volume and accessible to practices that don't have a $5,000 marketing budget. Some buyers eventually upgrade to our $1,497/mo service. Most don't, and that's fine.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Can I see an example report before I buy?</div>
+                <div class="faq-a">Yes. Email us at hello@localgrowthinsights.com and we'll send you a redacted sample from a previous audit. Practice name and city are removed; everything else is real.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">What if the report doesn't tell me anything I don't already know?</div>
+                <div class="faq-a">Then we refund the $97. We'd rather lose $97 than have someone feel cheated. This has happened twice out of our first audits — both times the dentist was already working with an SEO firm. If you're already on top of your GBP, tell us before you order and we'll suggest you skip it.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">How do you actually get the competitor data?</div>
+                <div class="faq-a">Public sources only. Google Business Profiles, Google Maps, and published review data. We don't scrape anything private, we don't use hacks, we don't access any account that isn't publicly visible. The same data anyone with time could gather manually — we just gather it faster and structure it into a report.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Do I need to give you access to my Google account?</div>
+                <div class="faq-a">Not for the audit. The $97 report uses only public data about your profile. For the $249 "Audit + Basic Fix" tier, yes — we need manager-level access to your GBP to execute the changes. Never owner access, and never for the report tier.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Is this really worth it for a small practice?</div>
+                <div class="faq-a">Small practices benefit more than large ones. If you're a solo dentist or a 2-chair practice, each new patient from Google matters more than it does for a 10-dentist corporate office. One new patient typically covers 15-30 audits depending on your procedures. The math is hard to argue with.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">How do I pay? Is it secure?</div>
+                <div class="faq-a">Payments processed through Stripe (the same system used by Shopify and Amazon). Credit card or ACH. No bank details stored on our side. You'll get a receipt and invoice by email immediately.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta">
+    <div class="container-narrow">
+        <h2>Know exactly <em>where you stand</em> on Google. In 48 hours.</h2>
+        <p>The $97 audit isn't a sales pitch. It's a diagnostic. Order it, get the report, decide what to do next — with or without us.</p>
+        <a href="report.html" class="btn-primary">Order the audit — $97 <span class="arrow">→</span></a>
+    </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <div class="logo-mark">L</div>
+                    Local Growth Insights
+                </a>
+                <p>Google Business Profile audits and management for US dental practices. Data-driven. Flat-priced. No retainer gatekeeping.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="report.html">The $97 audit</a></li>
+                    <li><a href="services.html">All services</a></li>
+                    <li><a href="grade.html">Free GBP grade</a></li>
+                    <li><a href="case-studies.html">Case studies</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="insights/index.html">Insights</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy.html">Privacy policy</a></li>
+                    <li><a href="terms.html">Terms of service</a></li>
+                    <li><a href="refunds.html">Refund policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>© 2026 Local Growth Insights. All rights reserved.</div>
+            <div>hello@localgrowthinsights.com · +1 (XXX) XXX-XXXX</div>
+        </div>
+    </div>
+</footer>
+
+<script>
+// FAQ accordion
+document.querySelectorAll('.faq-item').forEach(item => {
+    const question = item.querySelector('.faq-q');
+    question.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+    });
+});
+</script>
+
+</body>
+</html>

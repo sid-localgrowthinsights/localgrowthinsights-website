@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free GBP Grade · Local Growth Insights</title>
+<meta name="description" content="Get a free 1-page Google Business Profile scorecard for your dental practice. 60 seconds, no signup required.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<style>
+.grade-hero {
+    padding: 80px 0 40px;
+    text-align: center;
+}
+
+.grade-hero h1 {
+    margin: 0 auto 24px;
+    max-width: 800px;
+}
+
+.grade-hero p {
+    font-size: 19px;
+    color: var(--ink-3);
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+.grade-form-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 40px;
+    max-width: 560px;
+    margin: 0 auto 80px;
+    box-shadow: 0 30px 60px -30px rgba(10, 14, 18, 0.15);
+}
+
+@media (max-width: 600px) { .grade-form-card { padding: 28px; } }
+
+.grade-form-card .form-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.grade-form-card input {
+    width: 100%;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    padding: 14px 16px;
+    border-radius: 4px;
+    font-family: 'Geist', sans-serif;
+    font-size: 16px;
+    margin-bottom: 20px;
+    transition: border-color 0.15s, background 0.15s;
+}
+
+.grade-form-card input:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: var(--paper);
+}
+
+.grade-form-card button {
+    width: 100%;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 16px;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Geist', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.15s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.grade-form-card button:hover:not(:disabled) {
+    background: var(--accent);
+    transform: translateY(-1px);
+}
+
+.grade-form-card button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.tiny-print {
+    font-size: 12px;
+    color: var(--ink-4);
+    text-align: center;
+    margin-top: 16px;
+}
+
+/* Loading state */
+.loading-state {
+    display: none;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.loading-state.active { display: block; }
+
+.loading-state .pulse {
+    width: 64px;
+    height: 64px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin: 0 auto 24px;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+}
+
+.loading-state .step {
+    font-family: 'Geist Mono', monospace;
+    font-size: 13px;
+    color: var(--ink-3);
+    margin-bottom: 8px;
+}
+
+/* Results */
+.results-section {
+    display: none;
+    padding: 60px 0;
+    background: var(--paper-2);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.results-section.active { display: block; }
+
+.scorecard {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+    max-width: 760px;
+    margin: 0 auto;
+    box-shadow: 0 30px 60px -30px rgba(10, 14, 18, 0.15);
+}
+
+.scorecard-header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 32px 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.scorecard-header .label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-4);
+    margin-bottom: 4px;
+}
+
+.scorecard-header h3 {
+    color: var(--paper);
+    font-size: 24px;
+    margin: 0;
+}
+
+.scorecard-header .city {
+    font-size: 14px;
+    color: var(--ink-4);
+    margin-top: 2px;
+}
+
+.overall-grade {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #B91C1C;
+    color: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-weight: 500;
+    flex-shrink: 0;
+}
+
+.scorecard-body { padding: 36px; }
+
+.score-row {
+    display: grid;
+    grid-template-columns: 1fr 100px 60px;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: center;
+    font-size: 15px;
+}
+
+.score-row:last-child { border-bottom: none; }
+
+.score-row .signal { color: var(--ink); font-weight: 500; }
+
+.score-row .value {
+    font-family: 'Geist Mono', monospace;
+    font-size: 13px;
+    color: var(--ink-3);
+    text-align: right;
+}
+
+.score-row .grade-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 3px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.grade-A { background: #D1FAE5; color: #065F46; }
+.grade-B { background: #DBEAFE; color: #1E40AF; }
+.grade-C { background: #FEF3C7; color: #92400E; }
+.grade-D { background: #FED7AA; color: #9A3412; }
+.grade-F { background: #FEE2E2; color: #991B1B; }
+
+.scorecard-cta {
+    background: var(--paper-2);
+    padding: 28px 36px;
+    border-top: 1px solid var(--line);
+    text-align: center;
+}
+
+.scorecard-cta h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.scorecard-cta p {
+    color: var(--ink-3);
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+@media (max-width: 600px) {
+    .score-row { grid-template-columns: 1fr 80px; }
+    .score-row .value { display: none; }
+    .scorecard-header { padding: 24px; }
+    .scorecard-body { padding: 24px; }
+}
+
+/* How it works */
+.how-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 48px;
+}
+
+@media (max-width: 768px) { .how-grid { grid-template-columns: 1fr; } }
+
+.how-item {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 28px;
+    border-radius: 4px;
+}
+
+.how-item .num {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 16px;
+}
+
+.how-item h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.how-item p {
+    font-size: 14px;
+    color: var(--ink-3);
+    line-height: 1.5;
+    margin: 0;
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo">
+            <div class="logo-mark">L</div>
+            Local Growth Insights
+        </a>
+        <div class="nav-links">
+            <a href="services.html">Services</a>
+            <a href="case-studies.html">Case studies</a>
+            <a href="grade.html">Free grade</a>
+            <a href="insights/index.html">Insights</a>
+            <a href="about.html">About</a>
+            <a href="report.html" class="nav-cta">Get the audit →</a>
+        </div>
+    </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="grade-hero">
+    <div class="container">
+        <div class="eyebrow">Free tool · 60 seconds · no signup</div>
+        <h1>How does your dental practice <em>score on Google?</em></h1>
+        <p>Enter your practice name and city. We'll pull your Google Business Profile, score it across 8 ranking signals, and give you a grade. Free, instant, no email required.</p>
+
+        <!-- ====== FORM ====== -->
+        <div class="grade-form-card" id="formCard">
+            <form onsubmit="runGrade(event)">
+                <label class="form-label">Practice name</label>
+                <input type="text" id="practiceName" placeholder="e.g. Smile Bright Family Dental" required>
+
+                <label class="form-label">City &amp; state</label>
+                <input type="text" id="practiceCity" placeholder="Fort Worth, TX" required>
+
+                <button type="submit" id="gradeBtn">
+                    Grade my profile <span style="font-family: 'Geist Mono', monospace;">→</span>
+                </button>
+
+                <div class="tiny-print">
+                    No email required. Your data isn't stored. We only use public Google Maps information.
+                </div>
+            </form>
+
+            <!-- Loading state -->
+            <div class="loading-state" id="loadingState">
+                <div class="pulse"></div>
+                <div class="step" id="loadStep1">→ Locating your Google Business Profile...</div>
+                <div class="step" id="loadStep2" style="display:none;">→ Scanning your top 5 competitors...</div>
+                <div class="step" id="loadStep3" style="display:none;">→ Calculating your scorecard...</div>
+            </div>
+        </div>
+
+        <!-- "How it works" preview before form is filled -->
+        <div class="container-narrow" style="margin-top: 60px;">
+            <div class="how-grid">
+                <div class="how-item">
+                    <div class="num">01</div>
+                    <h4>Public data only</h4>
+                    <p>We pull what anyone with time could find — your GBP listing, review counts, posting activity, photo count.</p>
+                </div>
+                <div class="how-item">
+                    <div class="num">02</div>
+                    <h4>8 ranking signals</h4>
+                    <p>The free version scores 8 of the 14 signals Google uses. The full audit covers all 14 plus competitor analysis.</p>
+                </div>
+                <div class="how-item">
+                    <div class="num">03</div>
+                    <h4>Score in 60 seconds</h4>
+                    <p>You see your grade for each signal plus an overall letter grade. No PDF download, no follow-up emails.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ RESULTS ============ -->
+<section class="results-section" id="resultsSection">
+    <div class="container">
+        <div class="section-label">Your scorecard</div>
+        <h2 style="margin-bottom: 16px;">Here's where you <em>currently stand.</em></h2>
+        <p style="font-size: 16px; color: var(--ink-3); margin-bottom: 40px; max-width: 620px;">This is a preview based on public Google data. The full $97 audit includes 6 more signals, full competitor analysis, and a 30-day action plan.</p>
+
+        <div class="scorecard">
+            <div class="scorecard-header">
+                <div>
+                    <div class="label">Free GBP scorecard</div>
+                    <h3 id="resultPractice">—</h3>
+                    <div class="city" id="resultCity">—</div>
+                </div>
+                <div class="overall-grade" id="overallGrade">C</div>
+            </div>
+
+            <div class="scorecard-body">
+                <div class="score-row">
+                    <div class="signal">Total reviews</div>
+                    <div class="value" id="reviewsValue">—</div>
+                    <div><span class="grade-badge" id="reviewsGrade">—</span></div>
+                </div>
+                <div class="score-row">
+                    <div class="signal">Review velocity (90d)</div>
+                    <div class="value" id="velocityValue">—</div>
+                    <div><span class="grade-badge" id="velocityGrade">—</span></div>
+                </div>
+                <div class="score-row">
+                    <div class="signal">Average star rating</div>
+                    <div class="value" id="ratingValue">—</div>
+                    <div><span class="grade-badge" id="ratingGrade">—</span></div>
+                </div>
+                <div class="score-row">
+                    <div class="signal">Categories listed</div>
+                    <div class="value" id="categoriesValue">—</div>
+                    <div><span class="grade-badge" id="categoriesGrade">—</span></div>
+                </div>
+                <div class="score-row">
+                    <div class="signal">Photo count</div>
+                    <div class="value" id="photosValue">—</div>
+                    <div><span class="grade-badge" id="photosGrade">—</span></div>
+                </div>
+                <div class="score-row">
+                    <div class="signal">Google Posts (30d)</div>
+                    <div class="value" id="postsValue">—</div>
+                    <div><span class="grade-badge" id="postsGrade">—</span></div>
+                </div>
+                <div class="score-row">
+                    <div class="signal">Q&amp;A activity</div>
+                    <div class="value" id="qaValue">—</div>
+                    <div><span class="grade-badge" id="qaGrade">—</span></div>
+                </div>
+                <div class="score-row">
+                    <div class="signal">Profile completeness</div>
+                    <div class="value" id="profileValue">—</div>
+                    <div><span class="grade-badge" id="profileGrade">—</span></div>
+                </div>
+            </div>
+
+            <div class="scorecard-cta">
+                <h4>Want the full picture?</h4>
+                <p>The $97 audit covers 6 more signals, names your top 5 competitors specifically, and gives you a 30-day action plan to fix everything.</p>
+                <a href="report.html" class="btn-primary">Get the full $97 audit <span class="arrow">→</span></a>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 32px;">
+            <button onclick="resetForm()" class="btn-secondary">Grade another practice</button>
+        </div>
+    </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <div class="logo-mark">L</div>
+                    Local Growth Insights
+                </a>
+                <p>Google Business Profile audits and management for US dental practices. Data-driven. Flat-priced. No retainer gatekeeping.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="report.html">The $97 audit</a></li>
+                    <li><a href="services.html">All services</a></li>
+                    <li><a href="grade.html">Free GBP grade</a></li>
+                    <li><a href="case-studies.html">Case studies</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="insights/index.html">Insights</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy.html">Privacy policy</a></li>
+                    <li><a href="terms.html">Terms of service</a></li>
+                    <li><a href="refunds.html">Refund policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>© 2026 Local Growth Insights. All rights reserved.</div>
+            <div>hello@localgrowthinsights.com · +1 (XXX) XXX-XXXX</div>
+        </div>
+    </div>
+</footer>
+
+<script>
+/*
+=================================================================
+GBP GRADE TOOL — DEMO/PROTOTYPE LOGIC
+=================================================================
+This currently uses simulated data. To make it real:
+
+1. Replace the simulateScrape() function with an API call to your 
+   backend (Python scraper that uses Google Places API or your existing 
+   GBP scraper script).
+
+2. The backend should accept practice name + city, return JSON like:
+   {
+     reviews: 19,
+     velocity: 2,
+     rating: 4.2,
+     categories: 1,
+     photos: 14,
+     posts: 0,
+     qa: 0,
+     completeness: 60
+   }
+
+3. The grading logic below converts those values into letter grades.
+=================================================================
+*/
+
+const form = document.querySelector('form');
+const formCard = document.getElementById('formCard');
+const loadingState = document.getElementById('loadingState');
+const resultsSection = document.getElementById('resultsSection');
+const gradeBtn = document.getElementById('gradeBtn');
+
+async function runGrade(e) {
+    e.preventDefault();
+    const practice = document.getElementById('practiceName').value;
+    const city = document.getElementById('practiceCity').value;
+
+    // Show loading state
+    form.style.display = 'none';
+    loadingState.classList.add('active');
+
+    // Animate steps
+    setTimeout(() => {
+        document.getElementById('loadStep1').style.display = 'none';
+        document.getElementById('loadStep2').style.display = 'block';
+    }, 1200);
+    setTimeout(() => {
+        document.getElementById('loadStep2').style.display = 'none';
+        document.getElementById('loadStep3').style.display = 'block';
+    }, 2400);
+
+    // Simulate the scrape (REPLACE THIS WITH REAL API CALL)
+    const data = await simulateScrape(practice, city);
+
+    // Wait a bit more for the third step animation
+    setTimeout(() => {
+        renderResults(practice, city, data);
+    }, 3600);
+}
+
+async function simulateScrape(practice, city) {
+    // Demo data - generate semi-realistic scores based on practice name length (deterministic)
+    // In production, replace this with a real fetch() to your backend
+    await new Promise(r => setTimeout(r, 3500));
+
+    // Deterministic pseudo-random based on input string
+    const seed = practice.length + city.length;
+    const rand = (max) => ((seed * 9301 + 49297) % 233280) / 233280 * max;
+
+    return {
+        reviews: 12 + Math.floor(rand(45)),       // 12-57
+        velocity: Math.floor(rand(8)),             // 0-7
+        rating: (3.8 + rand(1.2)).toFixed(1),     // 3.8-5.0
+        categories: 1 + Math.floor(rand(3)),       // 1-3
+        photos: 8 + Math.floor(rand(50)),          // 8-58
+        posts: Math.floor(rand(4)),                // 0-3
+        qa: Math.floor(rand(6)),                   // 0-5
+        completeness: 50 + Math.floor(rand(40))    // 50-90
+    };
+}
+
+function gradeFor(value, thresholds) {
+    // thresholds: [Athresh, Bthresh, Cthresh, Dthresh] — value >= threshold = that grade
+    if (value >= thresholds[0]) return 'A';
+    if (value >= thresholds[1]) return 'B';
+    if (value >= thresholds[2]) return 'C';
+    if (value >= thresholds[3]) return 'D';
+    return 'F';
+}
+
+function renderResults(practice, city, data) {
+    // Calculate grades
+    const reviewsG = gradeFor(data.reviews, [50, 35, 20, 10]);
+    const velocityG = gradeFor(data.velocity, [6, 4, 2, 1]);
+    const ratingG = gradeFor(parseFloat(data.rating), [4.7, 4.4, 4.0, 3.5]);
+    const categoriesG = gradeFor(data.categories, [4, 3, 2, 1]);
+    const photosG = gradeFor(data.photos, [50, 30, 15, 8]);
+    const postsG = gradeFor(data.posts, [4, 2, 1, 0.5]);
+    const qaG = gradeFor(data.qa, [10, 5, 3, 1]);
+    const profileG = gradeFor(data.completeness, [85, 75, 60, 40]);
+
+    // Calculate overall (average GPA)
+    const gpaMap = { A: 4, B: 3, C: 2, D: 1, F: 0 };
+    const grades = [reviewsG, velocityG, ratingG, categoriesG, photosG, postsG, qaG, profileG];
+    const avgGpa = grades.reduce((s, g) => s + gpaMap[g], 0) / grades.length;
+    const overall = avgGpa >= 3.5 ? 'A' : avgGpa >= 2.5 ? 'B' : avgGpa >= 1.5 ? 'C' : avgGpa >= 0.8 ? 'D' : 'F';
+
+    // Color of overall grade circle
+    const overallGradeEl = document.getElementById('overallGrade');
+    const colorMap = { A: '#047857', B: '#1E40AF', C: '#92400E', D: '#9A3412', F: '#991B1B' };
+    overallGradeEl.style.background = colorMap[overall];
+    overallGradeEl.textContent = overall;
+
+    // Populate fields
+    document.getElementById('resultPractice').textContent = practice;
+    document.getElementById('resultCity').textContent = city;
+
+    setScore('reviews', data.reviews + ' reviews', reviewsG);
+    setScore('velocity', data.velocity + ' new reviews', velocityG);
+    setScore('rating', data.rating + ' stars', ratingG);
+    setScore('categories', data.categories + ' selected', categoriesG);
+    setScore('photos', data.photos + ' photos', photosG);
+    setScore('posts', data.posts + ' posts', postsG);
+    setScore('qa', data.qa + ' answers', qaG);
+    setScore('profile', data.completeness + '%', profileG);
+
+    // Hide form, show results
+    formCard.style.display = 'none';
+    resultsSection.classList.add('active');
+    resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function setScore(prefix, value, grade) {
+    document.getElementById(prefix + 'Value').textContent = value;
+    const gradeEl = document.getElementById(prefix + 'Grade');
+    gradeEl.textContent = grade;
+    gradeEl.className = 'grade-badge grade-' + grade;
+}
+
+function resetForm() {
+    formCard.style.display = 'block';
+    form.style.display = 'block';
+    loadingState.classList.remove('active');
+    resultsSection.classList.remove('active');
+    document.getElementById('practiceName').value = '';
+    document.getElementById('practiceCity').value = '';
+    document.getElementById('loadStep1').style.display = 'block';
+    document.getElementById('loadStep2').style.display = 'none';
+    document.getElementById('loadStep3').style.display = 'none';
+    formCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+</script>
+
+</body>
+</html>

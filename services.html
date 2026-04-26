@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services · Local Growth Insights</title>
+<meta name="description" content="Three transparent service tiers for US dental practices: $97 audit, $249 audit + fix, $1,497/mo Local Dominance retainer.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<style>
+.tier-section {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.tier-section:nth-child(even) { background: var(--paper-2); }
+
+.tier-section .container {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .tier-section .container { grid-template-columns: 1fr; gap: 40px; }
+}
+
+.tier-meta { position: sticky; top: 100px; }
+@media (max-width: 900px) { .tier-meta { position: static; } }
+
+.tier-meta .price-tag {
+    font-family: 'Fraunces', serif;
+    font-size: 64px;
+    line-height: 1;
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    margin-bottom: 4px;
+}
+
+.tier-meta .price-tag .unit {
+    font-family: 'Geist Mono', monospace;
+    font-size: 16px;
+    color: var(--ink-3);
+    font-weight: 400;
+}
+
+.tier-meta .billing {
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 24px;
+}
+
+.tier-meta h2 {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.tier-meta .tagline {
+    font-size: 17px;
+    color: var(--ink-3);
+    margin-bottom: 32px;
+}
+
+.tier-meta .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 14px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    transition: background 0.15s;
+}
+
+.tier-meta .cta:hover { background: var(--accent); }
+
+.tier-content h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    margin: 32px 0 12px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+
+.tier-content h3:first-child { margin-top: 0; }
+
+.tier-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0;
+}
+
+.tier-content ul li {
+    padding: 10px 0;
+    padding-left: 24px;
+    position: relative;
+    border-bottom: 1px solid var(--line);
+    font-size: 15px;
+    color: var(--ink-2);
+}
+
+.tier-content ul li:last-child { border-bottom: none; }
+
+.tier-content ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-family: 'Geist Mono', monospace;
+}
+
+.tier-content .deliverable-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+}
+
+.tier-content .deliverable-row:last-child { border-bottom: none; }
+
+.tier-content .deliverable-row .what {
+    font-weight: 500;
+    color: var(--ink);
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.tier-content .deliverable-row .desc {
+    color: var(--ink-3);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.tier-content .deliverable-row .freq {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    color: var(--accent-2);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: var(--paper-2);
+    padding: 4px 10px;
+    border-radius: 3px;
+    white-space: nowrap;
+}
+
+/* Comparison table */
+.compare-section {
+    padding: 80px 0;
+    background: var(--ink);
+    color: var(--paper);
+}
+
+.compare-section h2 { color: var(--paper); }
+.compare-section h2 em { color: #F59E0B; }
+.compare-section .section-label { color: #F59E0B; }
+.compare-section .lead { color: var(--ink-4); }
+
+.compare-table {
+    width: 100%;
+    margin-top: 40px;
+    border-collapse: collapse;
+}
+
+.compare-table th, .compare-table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #2A3138;
+    font-size: 14px;
+    vertical-align: top;
+}
+
+.compare-table th {
+    background: var(--ink-2);
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #F59E0B;
+    font-weight: 500;
+}
+
+.compare-table tr:hover td { background: var(--ink-2); }
+
+.compare-table .check { color: #34D399; font-weight: 600; }
+.compare-table .dash { color: var(--ink-4); }
+
+@media (max-width: 768px) {
+    .compare-table { font-size: 13px; }
+    .compare-table th, .compare-table td { padding: 12px 8px; }
+}
+
+.honest-section {
+    padding: 80px 0;
+}
+
+.honest-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+@media (max-width: 768px) { .honest-grid { grid-template-columns: 1fr; } }
+
+.honest-card {
+    background: var(--paper-2);
+    padding: 28px;
+    border-radius: 4px;
+    border-left: 3px solid var(--accent);
+}
+
+.honest-card.bad { border-left-color: var(--accent-2); }
+
+.honest-card h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.honest-card p {
+    margin: 0;
+    font-size: 15px;
+    color: var(--ink-3);
+    line-height: 1.5;
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo">
+            <div class="logo-mark">L</div>
+            Local Growth Insights
+        </a>
+        <div class="nav-links">
+            <a href="services.html">Services</a>
+            <a href="case-studies.html">Case studies</a>
+            <a href="grade.html">Free grade</a>
+            <a href="insights/index.html">Insights</a>
+            <a href="about.html">About</a>
+            <a href="report.html" class="nav-cta">Get the audit →</a>
+        </div>
+    </div>
+</nav>
+
+<header class="page-header">
+    <div class="container">
+        <div class="eyebrow">Services</div>
+        <h1>Three tiers. <em>One service.</em> Transparent pricing.</h1>
+        <p>You don't have to guess what you'll pay. We don't have a "request a quote" page. The price is the price, and what you get is detailed below.</p>
+    </div>
+</header>
+
+<!-- ============ TIER 1: AUDIT ============ -->
+<section class="tier-section" id="audit">
+    <div class="container">
+        <div class="tier-meta">
+            <div class="eyebrow">Tier 01 · The diagnostic</div>
+            <div class="price-tag">$97<span class="unit"> once</span></div>
+            <div class="billing">One-time payment · 48-hour delivery</div>
+            <h2>The Audit</h2>
+            <p class="tagline">A 12-page custom report. You implement the changes yourself.</p>
+            <a href="report.html" class="cta">Order the audit <span style="font-family: 'Geist Mono', monospace;">→</span></a>
+        </div>
+
+        <div class="tier-content">
+            <h3>What you receive</h3>
+            <ul>
+                <li>12-page PDF report custom-built for your practice and city</li>
+                <li>Your current rankings for the 10 highest-volume keywords in your zip code</li>
+                <li>14-signal GBP scorecard with red / yellow / green for each signal</li>
+                <li>Top 5 competitor breakdown — what they're doing that you aren't</li>
+                <li>30-day action checklist, prioritized by impact-to-effort ratio</li>
+                <li>10 Google Post drafts, 8 review response templates, category recommendations</li>
+            </ul>
+
+            <h3>How long it takes</h3>
+            <ul>
+                <li>Order placed: minute 0</li>
+                <li>Data collection &amp; competitor scrape: hours 1-12</li>
+                <li>Analysis and report build: hours 12-36</li>
+                <li>PDF delivery to your inbox: hour 48</li>
+            </ul>
+
+            <h3>Best for</h3>
+            <ul>
+                <li>Practices that want to know what's wrong but plan to execute themselves</li>
+                <li>Owners who don't trust agencies and want raw data they control</li>
+                <li>Anyone considering hiring an SEO firm — the audit shows you what you actually need</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ============ TIER 2: BASIC FIX ============ -->
+<section class="tier-section" id="basic-fix">
+    <div class="container">
+        <div class="tier-meta">
+            <div class="eyebrow">Tier 02 · Diagnostic + execution</div>
+            <div class="price-tag">$249<span class="unit"> once</span></div>
+            <div class="billing">One-time payment · 7-day turnaround</div>
+            <h2>Audit + Basic Fix</h2>
+            <p class="tagline">We run the audit and execute the top 10 fixes for you.</p>
+            <a href="contact.html?service=basic-fix" class="cta">Book the basic fix <span style="font-family: 'Geist Mono', monospace;">→</span></a>
+        </div>
+
+        <div class="tier-content">
+            <h3>Everything in The Audit, plus we do the work</h3>
+
+            <div class="deliverable-row">
+                <div>
+                    <div class="what">Category corrections</div>
+                    <div class="desc">We fix your primary category and add the 3-4 secondary categories Google rewards but most dentists miss.</div>
+                </div>
+                <div class="freq">Day 1-2</div>
+            </div>
+
+            <div class="deliverable-row">
+                <div>
+                    <div class="what">Business description rewrite</div>
+                    <div class="desc">Your description rewritten to include high-volume keywords, written for both humans and Google's parsing.</div>
+                </div>
+                <div class="freq">Day 2-3</div>
+            </div>
+
+            <div class="deliverable-row">
+                <div>
+                    <div class="what">Q&amp;A seeding</div>
+                    <div class="desc">10 high-relevance questions added to your Q&amp;A section with thoughtful answers (the section Google weights but 90% of dentists ignore).</div>
+                </div>
+                <div class="freq">Day 3-4</div>
+            </div>
+
+            <div class="deliverable-row">
+                <div>
+                    <div class="what">Initial Google Posts</div>
+                    <div class="desc">First 4 posts created and scheduled — covering services, an offer, a team intro, and a community/practice update.</div>
+                </div>
+                <div class="freq">Day 4-5</div>
+            </div>
+
+            <div class="deliverable-row">
+                <div>
+                    <div class="what">Review response templates loaded</div>
+                    <div class="desc">8 customized response templates for common review scenarios (5-star, 4-star, neutral, complaint) loaded into your account.</div>
+                </div>
+                <div class="freq">Day 5-6</div>
+            </div>
+
+            <div class="deliverable-row">
+                <div>
+                    <div class="what">Service list buildout</div>
+                    <div class="desc">Your "Products &amp; Services" section populated with the procedures patients actually search for.</div>
+                </div>
+                <div class="freq">Day 6-7</div>
+            </div>
+
+            <h3>What you provide</h3>
+            <ul>
+                <li>Manager-level access to your Google Business Profile (not owner — we never ask for that)</li>
+                <li>Approval on the rewritten business description before we publish</li>
+                <li>30 minutes of your time across the 7 days for input and approvals</li>
+            </ul>
+
+            <h3>Best for</h3>
+            <ul>
+                <li>Practices with no time to implement changes themselves</li>
+                <li>Owners who want measurable improvements before committing to ongoing management</li>
+                <li>Multi-practice owners testing one location before scaling</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ============ TIER 3: DOMINANCE ============ -->
+<section class="tier-section" id="dominance">
+    <div class="container">
+        <div class="tier-meta">
+            <div class="eyebrow">Tier 03 · Ongoing management</div>
+            <div class="price-tag">$1,497<span class="unit"> /mo</span></div>
+            <div class="billing">Monthly · Cancel anytime</div>
+            <h2>Local Dominance</h2>
+            <p class="tagline">We run your Google Business Profile like a team member would. Hands-on, ongoing.</p>
+            <a href="contact.html?service=dominance" class="cta">Schedule a call <span style="font-family: 'Geist Mono', monospace;">→</span></a>
+        </div>
+
+        <div class="tier-content">
+            <h3>What we do, monthly</h3>
+
+            <div class="deliverable-row">
+                <div>
+                    <div class="what">Google Posts published</div>
+                    <div class="desc">Custom-written posts about your services, offers, and practice updates.</div>
+                </div>
+                <div class="freq">2× weekly</div>
+            </div>
+
+            <div class="deliverable-row">
+                <div>
+                    <div class="what">Review monitoring &amp; response</div>
+                    <div class="desc">Every new review gets a personalized response within 12 hours. Negative reviews escalated to you within 1 hour.</div>
+                </div>
+                <div class="freq">Daily</div>
+            </div>
+
+            <div class="deliverable-row">
+                <div>
+                    <div class="what">Competitor watch</div>
+                    <div class="desc">When a competitor adds a service, runs an offer, or shifts strategy, you get an alert with our suggested response.</div>
+                </div>
+                <div class="freq">Weekly</div>
+            </div>
+
+            <div class="deliverable-row">
+                <div>
+                    <div class="what">Q&amp;A management</div>
+                    <div class="desc">New customer questions answered within 24 hours. Strategic Q&amp;A added to capture long-tail searches.</div>
+                </div>
+                <div class="freq">Continuous</div>
+            </div>
+
+            <div class="deliverable-row">
+                <div>
+                    <div class="what">Photo &amp; media uploads</div>
+                    <div class="desc">5-10 new photos per month with proper captions and geo-tags. Optional video uploads if you provide raw clips.</div>
+                </div>
+                <div class="freq">Monthly</div>
+            </div>
+
+            <div class="deliverable-row">
+                <div>
+                    <div class="what">Ranking report</div>
+                    <div class="desc">Detailed PDF showing rank changes for your 10 priority keywords, review velocity, profile views, and patient action data.</div>
+                </div>
+                <div class="freq">Monthly</div>
+            </div>
+
+            <div class="deliverable-row">
+                <div>
+                    <div class="what">Strategy call</div>
+                    <div class="desc">30-minute review call with you — what's working, what we're trying next, what input we need from your team.</div>
+                </div>
+                <div class="freq">Quarterly</div>
+            </div>
+
+            <div class="deliverable-row">
+                <div>
+                    <div class="what">Direct Slack channel</div>
+                    <div class="desc">Private channel for fast comms. Most messages answered within 2 hours during US business hours.</div>
+                </div>
+                <div class="freq">Always-on</div>
+            </div>
+
+            <h3>What we don't do (yet)</h3>
+            <ul>
+                <li>Website redesign or copywriting (separate engagement)</li>
+                <li>Google Ads management (we have a partner referral)</li>
+                <li>Social media beyond Google Posts (Instagram, TikTok not included)</li>
+                <li>Patient acquisition funnels or lead magnets (Local Dominance + extras tier)</li>
+            </ul>
+
+            <h3>Best for</h3>
+            <ul>
+                <li>Practices generating $50K+/month that want consistent new patient flow from Google</li>
+                <li>Owners who tried doing GBP themselves and gave up after 60 days</li>
+                <li>Multi-location practices needing one consistent system across locations</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ============ COMPARISON ============ -->
+<section class="compare-section">
+    <div class="container">
+        <div class="section-label">Side by side</div>
+        <h2>Compare the <em>three tiers</em>.</h2>
+        <p class="lead">Same underlying data and analysis. Different levels of execution and ongoing support.</p>
+
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>The Audit · $97</th>
+                    <th>Audit + Fix · $249</th>
+                    <th>Local Dominance · $1,497/mo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>12-page diagnostic report</strong></td>
+                    <td><span class="check">✓</span></td>
+                    <td><span class="check">✓</span></td>
+                    <td><span class="check">✓</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Top 5 competitor analysis</strong></td>
+                    <td><span class="check">✓</span></td>
+                    <td><span class="check">✓</span></td>
+                    <td><span class="check">✓</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Action checklist provided</strong></td>
+                    <td><span class="check">✓</span></td>
+                    <td><span class="check">✓</span></td>
+                    <td><span class="check">✓</span></td>
+                </tr>
+                <tr>
+                    <td><strong>We execute the top fixes</strong></td>
+                    <td><span class="dash">—</span></td>
+                    <td><span class="check">✓ (one-time)</span></td>
+                    <td><span class="check">✓ (ongoing)</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Weekly Google Posts</strong></td>
+                    <td><span class="dash">—</span></td>
+                    <td><span class="dash">— (4 initial only)</span></td>
+                    <td><span class="check">✓ (2× weekly)</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Review monitoring &amp; response</strong></td>
+                    <td><span class="dash">—</span></td>
+                    <td><span class="dash">—</span></td>
+                    <td><span class="check">✓ (daily)</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Monthly ranking reports</strong></td>
+                    <td><span class="dash">—</span></td>
+                    <td><span class="dash">—</span></td>
+                    <td><span class="check">✓</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Direct Slack channel</strong></td>
+                    <td><span class="dash">—</span></td>
+                    <td><span class="dash">—</span></td>
+                    <td><span class="check">✓</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Turnaround time</strong></td>
+                    <td>48 hours</td>
+                    <td>7 days</td>
+                    <td>Ongoing</td>
+                </tr>
+                <tr>
+                    <td><strong>Commitment</strong></td>
+                    <td>None</td>
+                    <td>None</td>
+                    <td>Cancel anytime</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- ============ HONEST SECTION ============ -->
+<section class="honest-section">
+    <div class="container-narrow">
+        <div class="section-label">Plain talk</div>
+        <h2>What <em>actually happens</em> after you buy.</h2>
+
+        <div class="honest-grid">
+            <div class="honest-card">
+                <h4>Most people start with the $97 audit</h4>
+                <p>Roughly 80% of new clients try the audit first. About 1 in 8 then upgrade to the $249 implementation. About 1 in 30 eventually move to Local Dominance. That's normal and expected — the audit is designed to be useful on its own.</p>
+            </div>
+            <div class="honest-card bad">
+                <h4>We won't push you to upgrade</h4>
+                <p>If you bought the $97 audit and the fixes are working, we'd rather you stay there than feel pressured into a retainer you don't need. The retainer makes sense when GBP becomes a meaningful patient acquisition channel for you, not before.</p>
+            </div>
+            <div class="honest-card">
+                <h4>Local Dominance takes 60-90 days to show results</h4>
+                <p>Google Maps rankings move slowly. Most clients see meaningful position changes by month 2-3, not month 1. If you need new patients in 30 days, you need ads, not GBP optimization.</p>
+            </div>
+            <div class="honest-card bad">
+                <h4>We turn down clients sometimes</h4>
+                <p>If you're already ranking #1-3 for your main keywords, or already have 200+ reviews, or already work with a dedicated GBP agency, we'll tell you that the audit isn't worth your money. Saving you $97 is worth more than booking a $97 sale.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section style="padding: 60px 0 100px; text-align: center;">
+    <div class="container-narrow">
+        <h2>Not sure which tier?</h2>
+        <p style="font-size: 18px; color: var(--ink-3); max-width: 540px; margin: 0 auto 32px;">Start with the free grade or the $97 audit. They're refundable, fast, and give you everything you need to decide.</p>
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+            <a href="grade.html" class="btn-secondary">Get free grade first</a>
+            <a href="report.html" class="btn-primary">Get the $97 audit <span class="arrow">→</span></a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <div class="logo-mark">L</div>
+                    Local Growth Insights
+                </a>
+                <p>Google Business Profile audits and management for US dental practices. Data-driven. Flat-priced. No retainer gatekeeping.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="report.html">The $97 audit</a></li>
+                    <li><a href="services.html">All services</a></li>
+                    <li><a href="grade.html">Free GBP grade</a></li>
+                    <li><a href="case-studies.html">Case studies</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="insights/index.html">Insights</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy.html">Privacy policy</a></li>
+                    <li><a href="terms.html">Terms of service</a></li>
+                    <li><a href="refunds.html">Refund policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>© 2026 Local Growth Insights. All rights reserved.</div>
+            <div>hello@localgrowthinsights.com · +1 (XXX) XXX-XXXX</div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

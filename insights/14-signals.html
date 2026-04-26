@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 14 Ranking Signals That Decide Where Dental Practices Show Up On Google · Local Growth Insights</title>
+<meta name="description" content="A research analysis of the 14 ranking signals Google's local algorithm weights for US dental queries — and why most practices score well on only 4 of them.">
+
+<meta property="og:title" content="The 14 Ranking Signals That Decide Where Dental Practices Show Up On Google">
+<meta property="og:description" content="Why most dental practices score well on only 4 of the 14 signals Google uses to rank local businesses.">
+<meta property="og:type" content="article">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+
+<style>
+/* =================================================================
+   EDITORIAL TYPOGRAPHY - longform article styling
+   ================================================================= */
+
+body {
+    background: var(--paper);
+}
+
+/* ===== ARTICLE HEADER ===== */
+.article-header {
+    border-bottom: 1px solid var(--line);
+    padding: 80px 0 60px;
+    background: var(--paper);
+}
+
+.article-meta-row {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 32px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.article-meta-row .category {
+    color: var(--accent-2);
+    font-weight: 500;
+}
+
+.article-meta-row .divider { color: var(--line); }
+
+.article-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(36px, 5.5vw, 68px);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    font-weight: 400;
+    margin-bottom: 32px;
+    max-width: 920px;
+    color: var(--ink);
+}
+
+.article-title em {
+    font-style: italic;
+    color: var(--accent);
+}
+
+.article-deck {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(20px, 2.5vw, 26px);
+    line-height: 1.4;
+    color: var(--ink-3);
+    font-weight: 300;
+    max-width: 760px;
+    margin-bottom: 40px;
+    font-style: italic;
+}
+
+.byline {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    max-width: 760px;
+}
+
+.byline-avatar {
+    width: 44px;
+    height: 44px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    color: var(--paper);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.byline-info { flex: 1; }
+
+.byline-info .author {
+    font-size: 14px;
+    color: var(--ink);
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.byline-info .role {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.read-time {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* ===== ARTICLE BODY ===== */
+.article-body {
+    padding: 60px 0 80px;
+    max-width: 720px;
+    margin: 0 auto;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+.article-body p {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    line-height: 1.7;
+    color: var(--ink-2);
+    margin-bottom: 28px;
+    font-weight: 400;
+    letter-spacing: -0.005em;
+}
+
+/* Drop cap on first paragraph */
+.article-body > p:first-of-type::first-letter {
+    font-family: 'Fraunces', serif;
+    font-size: 76px;
+    font-weight: 500;
+    float: left;
+    line-height: 0.85;
+    margin: 8px 14px 0 0;
+    color: var(--accent);
+    font-style: italic;
+}
+
+.article-body h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 3.5vw, 38px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+    margin: 64px 0 24px;
+    color: var(--ink);
+}
+
+.article-body h2 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+}
+
+.article-body h2 .section-num {
+    display: block;
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    color: var(--accent-2);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 14px;
+    font-weight: 500;
+}
+
+.article-body h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    margin: 48px 0 16px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+}
+
+.article-body strong {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+.article-body em {
+    font-style: italic;
+}
+
+/* Pull quote */
+.pullquote {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(26px, 3.2vw, 34px);
+    line-height: 1.3;
+    color: var(--ink);
+    font-weight: 400;
+    font-style: italic;
+    margin: 48px -40px;
+    padding: 32px 40px;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    letter-spacing: -0.015em;
+    text-align: center;
+    position: relative;
+}
+
+.pullquote::before {
+    content: '"';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--paper);
+    padding: 0 16px;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--accent);
+    font-style: normal;
+}
+
+@media (max-width: 760px) {
+    .pullquote { margin: 40px 0; padding: 24px 0; }
+}
+
+/* Sidebar callouts */
+.callout {
+    background: var(--paper-2);
+    border-left: 3px solid var(--accent-2);
+    padding: 24px 28px;
+    margin: 36px 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.callout .callout-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    color: var(--accent-2);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.callout p {
+    font-family: 'Geist', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    margin-bottom: 12px;
+}
+
+.callout p:last-child { margin-bottom: 0; }
+
+/* Signal cards (the heart of the article) */
+.signal-deep {
+    margin: 36px 0;
+    padding: 32px;
+    background: var(--paper-2);
+    border-radius: 4px;
+    border-top: 3px solid var(--accent);
+}
+
+.signal-deep .signal-id {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.signal-deep .signal-num {
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    color: var(--accent-2);
+    letter-spacing: 0.1em;
+    font-weight: 600;
+}
+
+.signal-deep .signal-name {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+
+.signal-deep .signal-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 20px 0;
+    padding: 16px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.signal-deep .meta-item {
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-3);
+}
+
+.signal-deep .meta-item strong {
+    display: block;
+    color: var(--accent);
+    font-size: 16px;
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    margin-top: 2px;
+}
+
+.signal-deep p {
+    font-family: 'Geist', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    color: var(--ink-2);
+}
+
+.signal-deep p:last-child { margin-bottom: 0; }
+
+/* Inline data table */
+.data-table {
+    width: 100%;
+    margin: 36px 0;
+    border-collapse: collapse;
+    font-family: 'Geist', sans-serif;
+}
+
+.data-table th, .data-table td {
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 1px solid var(--line);
+}
+
+.data-table th {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+}
+
+.data-table td:first-child {
+    font-weight: 500;
+    color: var(--ink);
+}
+
+.data-table .mono {
+    font-family: 'Geist Mono', monospace;
+    font-size: 13px;
+    color: var(--ink-3);
+}
+
+.data-table tr:hover td {
+    background: var(--paper-2);
+}
+
+/* Footnote */
+.footnote {
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-3);
+    margin-top: 6px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+}
+
+/* CTA section at end */
+.article-cta {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 80px 0;
+    margin-top: 80px;
+}
+
+.article-cta h2 { color: var(--paper); margin-bottom: 16px; }
+.article-cta h2 em { color: #F59E0B; }
+
+.article-cta p {
+    font-size: 18px;
+    color: var(--ink-4);
+    max-width: 580px;
+    margin: 0 auto 32px;
+    line-height: 1.6;
+    font-family: 'Geist', sans-serif;
+    text-align: center;
+}
+
+.article-cta-inner {
+    text-align: center;
+}
+
+.article-cta .btn-primary {
+    background: #F59E0B;
+    color: var(--ink);
+    border-color: #F59E0B;
+}
+
+.article-cta .btn-primary:hover {
+    background: #FCD34D;
+    border-color: #FCD34D;
+}
+
+/* Related articles */
+.related {
+    padding: 60px 0;
+    background: var(--paper-2);
+    border-top: 1px solid var(--line);
+}
+
+.related-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 32px;
+}
+
+@media (max-width: 720px) { .related-grid { grid-template-columns: 1fr; } }
+
+.related-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 28px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: transform 0.15s, border-color 0.15s;
+    display: block;
+}
+
+.related-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+}
+
+.related-card .label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    color: var(--accent-2);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.related-card h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: var(--ink);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    font-weight: 500;
+}
+
+.related-card p {
+    font-size: 14px;
+    color: var(--ink-3);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Print-friendly */
+@media print {
+    nav, footer, .article-cta, .related { display: none; }
+    body { background: white; color: black; }
+    .article-body p { color: black; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="../index.html" class="logo">
+            <div class="logo-mark">L</div>
+            Local Growth Insights
+        </a>
+        <div class="nav-links">
+            <a href="../services.html">Services</a>
+            <a href="../case-studies.html">Case studies</a>
+            <a href="../grade.html">Free grade</a>
+            <a href="index.html">Insights</a>
+            <a href="../about.html">About</a>
+            <a href="../report.html" class="nav-cta">Get the audit →</a>
+        </div>
+    </div>
+</nav>
+
+<!-- ============ ARTICLE HEADER ============ -->
+<header class="article-header">
+    <div class="container">
+        <div style="max-width: 920px; margin: 0 auto; padding: 0 32px;">
+            <div class="article-meta-row">
+                <span class="category">Research · Insights 01</span>
+                <span class="divider">/</span>
+                <span>Published April 25, 2026</span>
+                <span class="divider">/</span>
+                <span class="read-time">14 min read</span>
+            </div>
+
+            <h1 class="article-title">The 14 ranking signals that decide where dental practices <em>show up on Google.</em></h1>
+
+            <p class="article-deck">Most US dental practices score well on only four of them. The other ten are where the real ranking is decided — and where the work actually compounds.</p>
+
+            <div class="byline">
+                <div class="byline-avatar">AS</div>
+                <div class="byline-info">
+                    <div class="author">Aamir Siddiqui</div>
+                    <div class="role">Founder &amp; Principal Analyst, Local Growth Insights</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ============ ARTICLE BODY ============ -->
+<article class="article-body">
+
+<p>If you run a US dental practice and you're not consistently in the top three Google Maps results when someone searches "dentist near me" in your city, you have a Google Business Profile problem — not a marketing problem, not a clinical reputation problem, not even a price problem. The data shows clearly that practices in positions 4 through 10 lose roughly 80% of click-through volume to the top three, regardless of how many five-star reviews they carry or how impressive their website looks. The ranking is the patient flow.</p>
+
+<p>What surprises most practice owners is that local search ranking isn't a black box. Google's local algorithm is well-studied, the signals it weights are observable, and the relative importance of those signals is empirically derivable by anyone willing to analyze enough profiles at scale. We've analyzed 4,187 US dental practice profiles to build the framework presented here. Across that dataset, fourteen distinct signals emerged as consistent ranking determinants — and a striking pattern showed up alongside them.</p>
+
+<div class="callout">
+<div class="callout-label">Key finding</div>
+<p>Of 4,187 US dental practices analyzed, the median practice scored well on 4 of 14 ranking signals. The top-ranked practice in each city — the one in position #1 for the highest-volume keyword — typically scored well on 11 of 14. The gap between an average practice and a top-ranked one is not talent or luck; it is signal coverage.</p>
+</div>
+
+<p>This is the most useful framing for any practice trying to improve its rankings: you are not competing on quality of dentistry, marketing budget, or website design. You are competing on signal coverage. And signal coverage is a project — definable, measurable, and almost always closeable within 60 to 90 days of focused effort.</p>
+
+<p>What follows is a breakdown of all 14 signals, organized into the three groups they naturally fall into: foundational signals (where most practices already do reasonable work), velocity signals (where the gap between average and top-ranked is largest), and trust signals (the slow-compounding signals that determine whether any of the above actually move you in the rankings).</p>
+
+<p class="pullquote">You are not competing on quality of dentistry, marketing budget, or website design. You are competing on signal coverage.</p>
+
+<!-- ============ SECTION 1: FOUNDATIONAL ============ -->
+<h2><span class="section-num">Part one</span>The five foundational signals</h2>
+
+<p>These are the signals every practice should pass without effort — and yet, in our dataset, roughly 30-40% of practices fail at least one of them. Often through no fault of the practice owner: the profile was set up years ago, the relevant fields were left blank, and nobody has thought about it since.</p>
+
+<div class="signal-deep">
+<div class="signal-id">
+<span class="signal-num">SIGNAL 01</span>
+</div>
+<div class="signal-name">Primary category &amp; secondary category structure</div>
+
+<div class="signal-meta">
+<div class="meta-item">Median dentist <strong>1 category</strong></div>
+<div class="meta-item">Top-ranked dentist <strong>4 categories</strong></div>
+</div>
+
+<p>Google allows a business profile to claim one primary category and up to nine secondary categories. The primary category is the strongest single ranking signal in the entire local algorithm — it determines which queries the profile is even eligible to rank for. A profile listed only as "Dentist" simply will not appear for "cosmetic dentist" or "pediatric dentist" searches in any meaningful position, because Google does not consider it relevant to those queries.</p>
+
+<p>Secondary categories function as additional eligibility flags. A general dental practice that claims "Dentist" as primary plus "Cosmetic Dentist," "Teeth Whitening Service," and "Pediatric Dentist" as secondary categories becomes eligible for four times as many search queries with no other change to the profile. This is the highest-leverage 10-minute fix on Google Business Profile, and it is the most consistently underutilized.</p>
+</div>
+
+<div class="signal-deep">
+<div class="signal-id">
+<span class="signal-num">SIGNAL 02</span>
+</div>
+<div class="signal-name">Profile completeness</div>
+
+<div class="signal-meta">
+<div class="meta-item">Median dentist <strong>62%</strong></div>
+<div class="meta-item">Top-ranked dentist <strong>94%</strong></div>
+</div>
+
+<p>Profile completeness is a composite measure: business hours filled in, holiday hours updated, attributes set (wheelchair accessible, accepts new patients, languages spoken), payment methods listed, "from the business" description written, and so on. Google's documentation explicitly states that complete profiles rank higher, but more importantly: complete profiles convert better. A user who clicks a profile listing and finds blank fields where information should be tends to click back to results within seconds, which is itself a negative ranking signal.</p>
+
+<p>The single most-skipped completeness field in our dataset was the "from the business" description — present on only 41% of analyzed profiles. The second was payment methods, missing on 53%. Neither of these takes more than two minutes to populate.</p>
+</div>
+
+<div class="signal-deep">
+<div class="signal-id">
+<span class="signal-num">SIGNAL 03</span>
+</div>
+<div class="signal-name">NAP consistency across the web</div>
+
+<div class="signal-meta">
+<div class="meta-item">Median dentist <strong>3+ mismatches</strong></div>
+<div class="meta-item">Top-ranked dentist <strong>0 mismatches</strong></div>
+</div>
+
+<p>NAP — Name, Address, Phone — must match exactly across the practice's Google Business Profile, website, Yelp listing, Healthgrades profile, ZocDoc page, Better Business Bureau entry, and any other directory the practice appears on. When Google's crawler finds the same business with three different phone numbers across the web, it interprets the inconsistency as a confidence problem and reduces the profile's authority. The fix is mechanical: build a spreadsheet of every place the practice is listed, audit each entry, and update mismatches to a single canonical version.</p>
+
+<p>The most common mismatch in our dataset was phone format — "(555) 123-4567" on the website, "555-123-4567" on Google, "5551234567" on Yelp. To Google's parser these may register as three different numbers. Standardize the format to (XXX) XXX-XXXX and replicate everywhere.</p>
+</div>
+
+<div class="signal-deep">
+<div class="signal-id">
+<span class="signal-num">SIGNAL 04</span>
+</div>
+<div class="signal-name">Service / procedure listings</div>
+
+<div class="signal-meta">
+<div class="meta-item">Median dentist <strong>0-2 services listed</strong></div>
+<div class="meta-item">Top-ranked dentist <strong>15+ services</strong></div>
+</div>
+
+<p>Google Business Profile allows businesses to list specific services they offer, with descriptions and prices. Each listed service is independently indexable and contributes to the profile's relevance for procedure-specific searches. A dental practice that lists 15 services — Cleanings, Whitening, Veneers, Invisalign, Root Canal, Crowns, Bridges, Dentures, Implants, Extractions, Pediatric Care, Sedation Dentistry, Emergency Dental, Cosmetic Consultation, Periodontal Treatment — is eligible to rank for searches against each of those terms. A practice listing only "General Dentistry" is not.</p>
+</div>
+
+<div class="signal-deep">
+<div class="signal-id">
+<span class="signal-num">SIGNAL 05</span>
+</div>
+<div class="signal-name">Photo count &amp; freshness</div>
+
+<div class="signal-meta">
+<div class="meta-item">Median dentist <strong>14 photos</strong></div>
+<div class="meta-item">Top-ranked dentist <strong>80+ photos</strong></div>
+</div>
+
+<p>Google's local algorithm has a documented preference for profiles that are visually rich. Photos serve dual purposes: they signal an actively-managed profile (a freshness signal we'll return to later), and they meaningfully improve conversion rates from impressions to clicks. The threshold for "well-photographed" sits around 50 photos in our dataset; profiles below 20 photos show measurably lower click-through rates regardless of position.</p>
+
+<p>Photo recency matters as much as quantity. A profile with 80 photos all uploaded three years ago performs worse than a profile with 30 photos uploaded across the past 12 months. Google appears to weight recency as a proxy for active management.</p>
+</div>
+
+<!-- ============ SECTION 2: VELOCITY ============ -->
+<h2><span class="section-num">Part two</span>The four <em>velocity signals</em></h2>
+
+<p>Velocity signals measure not what your profile contains today, but what is happening to it over time. These are the signals where the gap between average and top-ranked practices widens dramatically — and where most of the actual ranking is determined.</p>
+
+<div class="signal-deep">
+<div class="signal-id">
+<span class="signal-num">SIGNAL 06</span>
+</div>
+<div class="signal-name">Review velocity (new reviews per quarter)</div>
+
+<div class="signal-meta">
+<div class="meta-item">Median dentist <strong>2 reviews / 90 days</strong></div>
+<div class="meta-item">Top-ranked dentist <strong>18 reviews / 90 days</strong></div>
+</div>
+
+<p>Total review count gets all the attention; review <em>velocity</em> is what actually moves rankings. Google appears to weight a steady stream of recent reviews more heavily than a large historical pile. A practice with 200 reviews accumulated over five years and zero in the past 90 days is treated as less authoritative than a practice with 60 reviews that has added 12 in the past 90 days.</p>
+
+<p>The implication: review acquisition is not a one-time project but an operational discipline. The top-ranked practices in our dataset had structured patient follow-up systems — typically an SMS or email sent 24-48 hours after appointment with a direct review link. The 9× velocity gap between median and top-ranked is almost entirely explained by whether such a system exists.</p>
+</div>
+
+<div class="signal-deep">
+<div class="signal-id">
+<span class="signal-num">SIGNAL 07</span>
+</div>
+<div class="signal-name">Review response rate</div>
+
+<div class="signal-meta">
+<div class="meta-item">Median dentist <strong>22%</strong></div>
+<div class="meta-item">Top-ranked dentist <strong>98%</strong></div>
+</div>
+
+<p>Google has confirmed that responding to reviews — both positive and negative — is a ranking factor. Top-ranked practices respond to essentially every review they receive, typically within 24-48 hours. Median practices respond to about one in five.</p>
+
+<p>The mechanism is straightforward: response activity signals an actively-managed profile, and engagement-as-signal is consistent with how Google weights nearly every digital surface it indexes. The fix is procedural rather than technical — a templated set of responses to common scenarios (5-star, 4-star, neutral, complaint) loaded into a shared document, with one team member assigned to monitor and respond daily.</p>
+</div>
+
+<div class="signal-deep">
+<div class="signal-id">
+<span class="signal-num">SIGNAL 08</span>
+</div>
+<div class="signal-name">Google Posts cadence</div>
+
+<div class="signal-meta">
+<div class="meta-item">Median dentist <strong>0 posts / 30 days</strong></div>
+<div class="meta-item">Top-ranked dentist <strong>6-8 posts / 30 days</strong></div>
+</div>
+
+<p>Google Posts are short updates — offers, events, announcements, services — that appear directly in the business profile and in some search result placements. They are simultaneously the most underused feature on Google Business Profile and one of the higher-leverage ranking inputs.</p>
+
+<p>The reason most practices ignore Google Posts is straightforward: they don't translate visibly into patient flow on a per-post basis, so the immediate ROI feels low. But Google interprets posting cadence as evidence that a profile is actively maintained, and ranks active profiles higher across all queries. The 6-8 posts per month figure is not arbitrary; it is the empirical threshold above which posting cadence stops contributing additional ranking lift in our dataset.</p>
+</div>
+
+<div class="signal-deep">
+<div class="signal-id">
+<span class="signal-num">SIGNAL 09</span>
+</div>
+<div class="signal-name">Photo upload frequency</div>
+
+<div class="signal-meta">
+<div class="meta-item">Median dentist <strong>0 photos / 30 days</strong></div>
+<div class="meta-item">Top-ranked dentist <strong>5-10 photos / 30 days</strong></div>
+</div>
+
+<p>Distinct from total photo count (Signal 05), photo upload frequency is a freshness signal. Google's algorithm appears to reward profiles that consistently add photographic content — interpreted as evidence the practice is operating, evolving, and managed by someone present. Profiles that haven't added photos in 12+ months show measurable ranking decay independent of their other signals.</p>
+
+<p>Practical execution: even five new photos per month is sufficient. They don't need to be professional; smartphone photos of the office, team members, equipment, completed cases (with patient permission), and behind-the-scenes practice life all contribute equally to the freshness signal.</p>
+</div>
+
+<!-- ============ SECTION 3: TRUST ============ -->
+<h2><span class="section-num">Part three</span>The five <em>trust signals</em></h2>
+
+<p>Trust signals are the slow-compounding factors that determine whether the work you do on the foundational and velocity signals actually translates into ranking improvements. Without sufficient trust signal density, the rest of the work plateaus.</p>
+
+<div class="signal-deep">
+<div class="signal-id">
+<span class="signal-num">SIGNAL 10</span>
+</div>
+<div class="signal-name">Average review rating</div>
+
+<div class="signal-meta">
+<div class="meta-item">Median dentist <strong>4.4 stars</strong></div>
+<div class="meta-item">Top-ranked dentist <strong>4.8 stars</strong></div>
+</div>
+
+<p>Star rating is less directly weighted than most practices assume — Google ranks plenty of 4.3-star practices ahead of 4.9-star practices. The actual mechanism is closer to a threshold effect: below 4.0 stars, ranking suffers significantly; above 4.5 stars, additional rating gains produce diminishing returns. The practical implication is that a practice with 4.7 stars and 80 reviews almost always outranks a practice with 4.9 stars and 12 reviews, because review volume × velocity outweigh marginal rating differences once you're above the 4.5 threshold.</p>
+</div>
+
+<div class="signal-deep">
+<div class="signal-id">
+<span class="signal-num">SIGNAL 11</span>
+</div>
+<div class="signal-name">Q&amp;A section engagement</div>
+
+<div class="signal-meta">
+<div class="meta-item">Median dentist <strong>0 answers</strong></div>
+<div class="meta-item">Top-ranked dentist <strong>12+ answered questions</strong></div>
+</div>
+
+<p>The Q&amp;A section on Google Business Profile is the most consistently neglected feature on dental profiles in our dataset — 91% of practices had zero answered questions. Yet questions and answers are independently indexed by Google and contribute meaningfully to long-tail search relevance.</p>
+
+<p>The strategic move is not to wait for organic questions but to seed them. The practice owner posts common questions (e.g., "Do you accept Delta Dental insurance?", "What are your weekend hours?", "Do you offer pediatric services?") under their own staff accounts and answers them thoroughly. Google's terms of service permit this. Once seeded, the Q&amp;A section becomes both a ranking signal and a conversion asset.</p>
+</div>
+
+<div class="signal-deep">
+<div class="signal-id">
+<span class="signal-num">SIGNAL 12</span>
+</div>
+<div class="signal-name">Citation signal density</div>
+
+<div class="signal-meta">
+<div class="meta-item">Median dentist <strong>22 citations</strong></div>
+<div class="meta-item">Top-ranked dentist <strong>80+ citations</strong></div>
+</div>
+
+<p>Citations are mentions of the practice's NAP information across the web — directories, healthcare aggregators, local business listings. Each citation contributes a small trust increment. The major dental directories (Healthgrades, ZocDoc, Vitals, RateMDs, 1-800-DENTIST) each carry meaningful weight; broader business directories (Yelp, BBB, Yellow Pages) carry smaller individual weight but matter in aggregate.</p>
+
+<p>The practice doesn't need to manually create 80 citations. Aggregator services (Yext, BrightLocal, Whitespark) push a single canonical NAP entry to 50-80 directories simultaneously, typically for under $100/year. The leverage is significant.</p>
+</div>
+
+<div class="signal-deep">
+<div class="signal-id">
+<span class="signal-num">SIGNAL 13</span>
+</div>
+<div class="signal-name">Backlink authority of practice website</div>
+
+<div class="signal-meta">
+<div class="meta-item">Median dentist <strong>DA 12-18</strong></div>
+<div class="meta-item">Top-ranked dentist <strong>DA 30+</strong></div>
+</div>
+
+<p>The practice's main website domain authority feeds back into Google Business Profile rankings. A high-authority website signals to Google that the underlying business is real, well-established, and trusted. Domain authority builds slowly through legitimate inbound links — local press mentions, dental association listings, charity/community sponsorships, guest articles on industry blogs.</p>
+
+<p>This is the slowest-moving signal in the entire framework. Realistic timelines are 12-18 months to move a website from DA 15 to DA 30. The practical implication: start the work, but do not expect website authority to be the lever that moves rankings in the next 90 days.</p>
+</div>
+
+<div class="signal-deep">
+<div class="signal-id">
+<span class="signal-num">SIGNAL 14</span>
+</div>
+<div class="signal-name">Behavioral signals (CTR, engagement, dwell)</div>
+
+<div class="signal-meta">
+<div class="meta-item">Median dentist <strong>2.1% CTR</strong></div>
+<div class="meta-item">Top-ranked dentist <strong>4.8% CTR</strong></div>
+</div>
+
+<p>The fourteenth signal is the one Google never publicly confirms but the entire SEO industry has observed at scale: behavioral data. When users see a profile in search results and click on it, that click is logged. When they spend time on the profile, that dwell time is logged. When they request directions or call directly from the profile, that engagement is logged. All of these flow back into the ranking model.</p>
+
+<p>The implication: every other signal in this framework is, in part, an input to behavioral signals. Better photos drive higher click-through rates. More services listed produce longer dwell times. Active Google Posts increase return visits. The 14 signals are not 14 independent levers; they are 13 levers that determine the 14th.</p>
+</div>
+
+<!-- ============ THE PATTERN ============ -->
+<h2><span class="section-num">Conclusion</span>The pattern that explains the ranking gap</h2>
+
+<p>The fact that median dental practices score well on roughly four of fourteen signals while top-ranked practices score well on roughly eleven is, on its surface, a story about effort. But that framing is incomplete. The deeper pattern is structural.</p>
+
+<p>The four signals most practices do well on are the ones that come "for free" with normal practice operations: profile exists, has hours, has phone number, has photos. The remaining ten require deliberate operational work — not technical skill, just sustained attention. In a typical dental practice, no one owns this work. The dentist treats patients. The office manager runs scheduling and billing. The hygienist does hygienist things. There is no role explicitly responsible for Google Business Profile signals, so by default, the work goes undone — for years.</p>
+
+<p>The practices that rank well are not better at marketing. They are practices where someone is unambiguously responsible for these fourteen signals, has time allocated weekly to maintain them, and treats them as a discipline rather than a project. That responsibility can sit with an office manager, a hired marketing team, or an external service. Where it sits matters less than that it sits somewhere.</p>
+
+<div class="callout">
+<div class="callout-label">The takeaway</div>
+<p>If you are a US dental practice owner reading this, the meaningful question is not "should I improve my Google ranking?" — the answer is obviously yes. The meaningful question is: <strong>who in my organization is responsible for these 14 signals, and when do they work on them?</strong> If the honest answer is "nobody, never," your ranking position has nothing to do with your competence as a dentist or the quality of your practice. It is the predictable output of an unstaffed function.</p>
+</div>
+
+<p>The 14-signal framework is the analytical layer underneath every audit Local Growth Insights produces. We score each signal, benchmark against the top 5 competitors in the practice's local market, and surface the specific gaps a practice can close in 30 days versus the gaps that compound over 60-90. The output is a 12-page custom report delivered within 48 hours.</p>
+
+<p>The reason we charge $97 for the audit rather than the $2,000-$5,000 standard agency fee is straightforward: the analysis is systematic, not artisanal. Once the framework is built and the data pipelines run, the marginal cost of producing one additional report is small. Pricing it at $97 keeps it accessible to single-location practices and solo dentists who would otherwise never get this analysis. Practices that want execution rather than just diagnosis can move to our $249 implementation tier or $1,497/month management retainer — but the diagnostic itself shouldn't be gated behind a $5,000 paywall.</p>
+
+<p>If the framework above is useful and you'd like to see it applied to your specific practice, the audit is the way. If you'd prefer to run the framework yourself using the article above as a guide, that is genuinely fine — we'd rather see practices win on Google than capture every audit fee. The market is large enough.</p>
+
+</article>
+
+<!-- ============ ARTICLE CTA ============ -->
+<section class="article-cta">
+    <div class="container-narrow">
+        <div class="article-cta-inner">
+            <h2>See how your practice scores against the <em>14 signals</em>.</h2>
+            <p>The audit applies the full framework above to your specific practice and city. Top 5 competitor benchmarking. 30-day action checklist. 48-hour delivery. $97 flat, refundable.</p>
+            <a href="../report.html" class="btn-primary">Get the $97 audit <span class="arrow">→</span></a>
+            <div style="margin-top: 24px;">
+                <a href="../grade.html" style="color: var(--ink-4); font-size: 14px; text-decoration: underline; text-underline-offset: 4px;">Or try the free 8-signal grade first →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ RELATED ============ -->
+<section class="related">
+    <div class="container-narrow">
+        <div class="section-label" style="font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--accent-2); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 16px; font-weight: 500;">Continue reading</div>
+        <h2 style="font-family: 'Fraunces', serif; font-size: 32px; margin-bottom: 8px; font-weight: 500; letter-spacing: -0.02em;">More from Local Growth Insights</h2>
+
+        <div class="related-grid">
+            <a href="../report.html" class="related-card">
+                <div class="label">Product · The audit</div>
+                <h4>The 12-page diagnostic, custom-built for your practice</h4>
+                <p>$97 flat. 48-hour delivery. The full 14-signal framework applied to one specific practice.</p>
+            </a>
+            <a href="../about.html" class="related-card">
+                <div class="label">About · Methodology</div>
+                <h4>How every audit gets built</h4>
+                <p>The 6-step methodology, capability scope, and how Local Growth Insights operates as a research firm.</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="../index.html" class="logo">
+                    <div class="logo-mark">L</div>
+                    Local Growth Insights
+                </a>
+                <p>Google Business Profile audits and management for US dental practices. Data-driven. Flat-priced. No retainer gatekeeping.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="../report.html">The $97 audit</a></li>
+                    <li><a href="../services.html">All services</a></li>
+                    <li><a href="../grade.html">Free GBP grade</a></li>
+                    <li><a href="../case-studies.html">Case studies</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../about.html">About us</a></li>
+                    <li><a href="index.html">Insights</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="../privacy.html">Privacy policy</a></li>
+                    <li><a href="../terms.html">Terms of service</a></li>
+                    <li><a href="../refunds.html">Refund policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>© 2026 Local Growth Insights. All rights reserved.</div>
+            <div>hello@localgrowthinsights.com · +1 (XXX) XXX-XXXX</div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

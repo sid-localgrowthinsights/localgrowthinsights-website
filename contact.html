@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact · Local Growth Insights</title>
+<meta name="description" content="Get in touch with Local Growth Insights about GBP audits, services, or partnerships.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<style>
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    padding: 60px 0;
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; padding: 40px 0; }
+}
+
+.contact-info h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    margin-bottom: 8px;
+    margin-top: 32px;
+    font-weight: 500;
+}
+
+.contact-info h3:first-child { margin-top: 0; }
+
+.contact-info .item {
+    margin-bottom: 24px;
+}
+
+.contact-info .label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-3);
+    margin-bottom: 4px;
+}
+
+.contact-info .value {
+    font-size: 17px;
+    color: var(--ink);
+}
+
+.contact-info a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+}
+
+.contact-info a:hover {
+    color: var(--accent-2);
+    border-bottom-color: var(--accent-2);
+}
+
+/* Form */
+.contact-form {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 36px;
+    border-radius: 6px;
+}
+
+.contact-form h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.contact-form > p {
+    color: var(--ink-3);
+    font-size: 15px;
+    margin-bottom: 28px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+@media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+
+.form-group { margin-bottom: 16px; }
+
+.form-group label {
+    display: block;
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    padding: 14px 16px;
+    border-radius: 4px;
+    font-family: 'Geist', sans-serif;
+    font-size: 15px;
+    transition: border-color 0.15s, background 0.15s;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: 'Geist', sans-serif;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: var(--paper);
+}
+
+.contact-form button {
+    width: 100%;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 16px;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Geist', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.15s;
+    margin-top: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.contact-form button:hover {
+    background: var(--accent);
+}
+
+.success-msg {
+    display: none;
+    background: var(--highlight);
+    border-left: 3px solid var(--accent-2);
+    padding: 20px;
+    border-radius: 4px;
+    margin-top: 16px;
+}
+
+.success-msg.show { display: block; }
+
+.success-msg p {
+    margin: 0;
+    color: var(--ink);
+    font-size: 14px;
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo">
+            <div class="logo-mark">L</div>
+            Local Growth Insights
+        </a>
+        <div class="nav-links">
+            <a href="services.html">Services</a>
+            <a href="case-studies.html">Case studies</a>
+            <a href="grade.html">Free grade</a>
+            <a href="insights/index.html">Insights</a>
+            <a href="about.html">About</a>
+            <a href="report.html" class="nav-cta">Get the audit →</a>
+        </div>
+    </div>
+</nav>
+
+<header class="page-header">
+    <div class="container-narrow">
+        <div class="eyebrow">Get in touch</div>
+        <h1>Questions, requests, or <em>pre-purchase clarification.</em></h1>
+        <p>The fastest way to evaluate us is to buy the $97 audit. But if you have specific questions before that — partnership inquiries, multi-practice orders, anything else — this is the place.</p>
+    </div>
+</header>
+
+<div class="container-narrow">
+    <div class="contact-grid">
+
+        <div class="contact-info">
+            <h3>Direct contact</h3>
+
+            <div class="item">
+                <div class="label">US phone line</div>
+                <div class="value">+1 (XXX) XXX-XXXX</div>
+            </div>
+
+            <div class="item">
+                <div class="label">Email</div>
+                <div class="value"><a href="mailto:hello@localgrowthinsights.com">hello@localgrowthinsights.com</a></div>
+            </div>
+
+            <div class="item">
+                <div class="label">Response time</div>
+                <div class="value">Email replies within 12 hours, usually 2-4 hours during US business hours.</div>
+            </div>
+
+            <h3>Specific inquiries</h3>
+
+            <div class="item">
+                <div class="label">Sample report request</div>
+                <div class="value"><a href="mailto:hello@localgrowthinsights.com?subject=Sample%20report%20please">Email us</a> and we'll send a redacted sample within 5 minutes.</div>
+            </div>
+
+            <div class="item">
+                <div class="label">Multi-practice orders (3+)</div>
+                <div class="value"><a href="mailto:hello@localgrowthinsights.com?subject=Multi-practice%20order">Email us</a> for per-practice discounted pricing.</div>
+            </div>
+
+            <div class="item">
+                <div class="label">Founding Partner waitlist</div>
+                <div class="value"><a href="mailto:hello@localgrowthinsights.com?subject=Founding%20Partner%20waitlist">Email us</a> to be notified when the August cohort opens.</div>
+            </div>
+
+            <h3>Operations</h3>
+
+            <div class="item">
+                <div class="label">Address</div>
+                <div class="value" style="font-size: 14px; color: var(--ink-3);">Local Growth Insights<br>Lucknow, Uttar Pradesh, India 226001</div>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <h3>Send us a message</h3>
+            <p>Use the form for general inquiries. For audit purchases, the <a href="report.html">order page</a> is faster.</p>
+
+            <form onsubmit="handleSubmit(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Your name</label>
+                        <input type="text" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Practice name</label>
+                        <input type="text" name="practice">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>City &amp; state</label>
+                        <input type="text" name="city">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>What can we help with?</label>
+                    <select name="topic" required>
+                        <option value="">Select a topic...</option>
+                        <option value="audit">Question about the $97 audit</option>
+                        <option value="basic-fix">Question about Audit + Basic Fix ($249)</option>
+                        <option value="dominance">Question about Local Dominance ($1,497/mo)</option>
+                        <option value="multi">Multi-practice / Group dental order</option>
+                        <option value="founding">Founding Partner waitlist</option>
+                        <option value="partnership">Partnership / Reseller inquiry</option>
+                        <option value="other">Something else</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Your message</label>
+                    <textarea name="message" required></textarea>
+                </div>
+
+                <button type="submit">Send message <span style="font-family: 'Geist Mono', monospace;">→</span></button>
+
+                <div class="success-msg" id="successMsg">
+                    <p><strong>Thanks!</strong> We'll get back to you within 12 hours, usually faster. Check your inbox (including spam).</p>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <div class="logo-mark">L</div>
+                    Local Growth Insights
+                </a>
+                <p>Google Business Profile audits and management for US dental practices. Data-driven. Flat-priced. No retainer gatekeeping.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="report.html">The $97 audit</a></li>
+                    <li><a href="services.html">All services</a></li>
+                    <li><a href="grade.html">Free GBP grade</a></li>
+                    <li><a href="case-studies.html">Case studies</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="insights/index.html">Insights</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy.html">Privacy policy</a></li>
+                    <li><a href="terms.html">Terms of service</a></li>
+                    <li><a href="refunds.html">Refund policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>© 2026 Local Growth Insights. All rights reserved.</div>
+            <div>hello@localgrowthinsights.com · +1 (XXX) XXX-XXXX</div>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Pre-fill topic from query string (e.g. ?service=basic-fix)
+const params = new URLSearchParams(window.location.search);
+if (params.get('service')) {
+    const topic = document.querySelector('select[name="topic"]');
+    if (topic) topic.value = params.get('service');
+}
+
+function handleSubmit(e) {
+    e.preventDefault();
+    // TODO: Connect to Formspree, FormSubmit, or your own backend
+    // For now, this just shows the success message
+    document.getElementById('successMsg').classList.add('show');
+    e.target.querySelectorAll('input, textarea, select').forEach(el => el.value = '');
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About · Local Growth Insights</title>
+<meta name="description" content="Local Growth Insights is a specialty research firm focused on Google Business Profile performance for US dental practices. Our methodology, our team, our principles.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<style>
+.story-section { padding: 60px 0; }
+
+.story-section .container-narrow p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--ink-2);
+    margin-bottom: 24px;
+}
+
+.story-section h3 {
+    margin-top: 48px;
+    font-size: 28px;
+}
+
+.story-section h3:first-child { margin-top: 0; }
+
+/* ===== CAPABILITY STATS BLOCK ===== */
+.capability-strip {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 80px 0;
+}
+
+.capability-strip h2 { color: var(--paper); }
+.capability-strip h2 em { color: #F59E0B; }
+.capability-strip .section-label { color: #F59E0B; }
+.capability-strip .lead { color: var(--ink-4); }
+
+.capability-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    margin-top: 48px;
+}
+
+@media (max-width: 768px) {
+    .capability-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+}
+
+.capability-stat .num {
+    font-family: 'Fraunces', serif;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-weight: 500;
+    color: var(--paper);
+    margin-bottom: 8px;
+}
+
+.capability-stat .num em {
+    font-family: 'Geist Mono', monospace;
+    font-size: 22px;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--ink-4);
+    margin-left: 4px;
+}
+
+.capability-stat .label {
+    font-size: 14px;
+    color: var(--ink-4);
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .capability-stat .num { font-size: 40px; }
+    .capability-stat .num em { font-size: 16px; }
+}
+
+/* ===== METHODOLOGY ===== */
+.methodology-section {
+    padding: 80px 0;
+    background: var(--paper-2);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.methodology-step {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 32px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+}
+
+.methodology-step:last-child { border-bottom: none; }
+
+.methodology-step .step-num {
+    font-family: 'Fraunces', serif;
+    font-size: 44px;
+    color: var(--accent);
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+}
+
+.methodology-step h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+
+.methodology-step p {
+    margin: 0;
+    font-size: 16px;
+    color: var(--ink-3);
+    line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+    .methodology-step { grid-template-columns: 1fr; gap: 8px; }
+    .methodology-step .step-num { font-size: 32px; }
+}
+
+/* ===== PRINCIPLES ===== */
+.principles { padding: 80px 0; }
+
+.principle {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 32px;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+}
+
+.principle:last-child { border-bottom: none; }
+
+.principle .num {
+    font-family: 'Fraunces', serif;
+    font-size: 48px;
+    color: var(--accent);
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+}
+
+.principle h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    margin-bottom: 12px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+
+.principle p {
+    margin: 0;
+    font-size: 16px;
+    color: var(--ink-3);
+    line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+    .principle { grid-template-columns: 1fr; gap: 12px; }
+    .principle .num { font-size: 36px; }
+}
+
+/* ===== FOUNDER (smaller, lower) ===== */
+.founder-section {
+    background: var(--paper-2);
+    border-top: 1px solid var(--line);
+    padding: 60px 0;
+}
+
+.founder-card {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 32px;
+    align-items: start;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 32px;
+    border-radius: 6px;
+}
+
+@media (max-width: 600px) {
+    .founder-card { grid-template-columns: 1fr; gap: 16px; }
+}
+
+.founder-photo {
+    width: 140px;
+    height: 140px;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 48px;
+    color: var(--accent);
+    font-weight: 500;
+}
+
+.founder-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    margin-bottom: 4px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+
+.founder-card .title {
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+}
+
+.founder-card p {
+    font-size: 15px;
+    color: var(--ink-3);
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo">
+            <div class="logo-mark">L</div>
+            Local Growth Insights
+        </a>
+        <div class="nav-links">
+            <a href="services.html">Services</a>
+            <a href="case-studies.html">Case studies</a>
+            <a href="grade.html">Free grade</a>
+            <a href="insights/index.html">Insights</a>
+            <a href="about.html">About</a>
+            <a href="report.html" class="nav-cta">Get the audit →</a>
+        </div>
+    </div>
+</nav>
+
+<header class="page-header">
+    <div class="container-narrow">
+        <div class="eyebrow">About us</div>
+        <h1>A specialty research firm for <em>US dental practices</em> that want to win on Google.</h1>
+        <p>Local Growth Insights focuses on one thing: helping US dental practices outrank competitors on Google Maps and Google Search. Not paid ads. Not website redesigns. Not Facebook posts. Just the channel where most new dental patients begin their search — and where most practices are leaving meaningful patient flow on the table.</p>
+    </div>
+</header>
+
+<!-- ============ CAPABILITY STATS ============ -->
+<section class="capability-strip">
+    <div class="container">
+        <div class="section-label">Our scope</div>
+        <h2>What we <em>actually do</em>, by the numbers.</h2>
+        <p class="lead">We're a focused research and execution firm — not a generalist agency. Here's what that focus looks like.</p>
+
+        <div class="capability-grid">
+            <div class="capability-stat">
+                <div class="num">14<em>signals</em></div>
+                <div class="label">Ranking factors analyzed in every audit. The framework took months to develop and validate against real ranking outcomes.</div>
+            </div>
+            <div class="capability-stat">
+                <div class="num">4,187<em>practices</em></div>
+                <div class="label">US dental practices analyzed in our reference database. Used to benchmark every audit against real industry data.</div>
+            </div>
+            <div class="capability-stat">
+                <div class="num">48<em>hours</em></div>
+                <div class="label">Standard audit delivery time. Every report is custom-built for one practice — no templates, no shortcuts.</div>
+            </div>
+            <div class="capability-stat">
+                <div class="num">100<em>%</em></div>
+                <div class="label">US-focused. We don't serve international markets, generalist B2B, or non-dental verticals. Specialization compounds.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ STORY ============ -->
+<section class="story-section">
+    <div class="container-narrow">
+        <h3>Why this firm exists</h3>
+        <p>Most US dental practices have a Google Business Profile that's underperforming — and they don't know exactly why. They suspect it. They feel it when a competitor shows up first in Maps. But they can't pinpoint the cause because the variables are hidden inside Google's ranking algorithm.</p>
+
+        <p>Meanwhile, the SEO agency model has settled into a comfortable racket: charge $3,000-$8,000/month for ongoing services that mostly involve posting once a week, responding to reviews, and producing reports the practice owner barely reads. The actual labor is 8-12 hours a month. The pricing exists because of the agency's office, account managers, and sales infrastructure — not because of the work itself.</p>
+
+        <p>Local Growth Insights was built to break that model. By specializing narrowly (US dental only), running our own analysis tooling, and operating with a lean structure, we deliver the same scope of work at roughly one-third the typical agency price.</p>
+
+        <h3>What we do differently</h3>
+        <p>We built an analysis system that does in 36 hours what most agencies stretch over 4-6 weeks: pulls your Google Business Profile, scrapes your top 5 competitors, scores you across 14 ranking signals, and produces a 12-page report with a 30-day action plan. We charge $97 for this.</p>
+
+        <p>For practices that want execution, our $249 tier handles the top 10 fixes — category corrections, business description rewrites, Q&amp;A seeding, the first batch of Google Posts. Done in 7 days, not 7 weeks.</p>
+
+        <p>For practices that want ongoing management, our $1,497/month retainer covers the work properly — weekly posts, daily review responses, monthly ranking reports, quarterly strategy. The same scope a $5,000/mo agency offers, at less than a third the price.</p>
+
+        <h3>What we don't do</h3>
+        <p>We don't promise rankings we can't deliver. We don't lock clients into year-long contracts. We don't take on practices we can't help. And we don't recommend services a practice doesn't need just to upsell.</p>
+
+        <p>If a client buys the $97 audit and the fixes work, we want them to stay at $97. The retainer makes sense when GBP becomes a meaningful patient acquisition channel — not before.</p>
+    </div>
+</section>
+
+<!-- ============ METHODOLOGY ============ -->
+<section class="methodology-section">
+    <div class="container-narrow">
+        <div class="section-label">Methodology</div>
+        <h2>How <em>every audit</em> gets built.</h2>
+        <p style="font-size: 17px; color: var(--ink-3); margin-bottom: 40px; max-width: 620px;">Six steps, applied identically to every practice we work with. The methodology is the product — not the analyst's intuition.</p>
+
+        <div class="methodology-step">
+            <div class="step-num">01</div>
+            <div>
+                <h3>Scope &amp; objectives</h3>
+                <p>For each engagement, we identify the practice's core service mix, primary geography, and competitive positioning. This determines which keywords and competitors we benchmark against — no generic dictionaries, no boilerplate.</p>
+            </div>
+        </div>
+
+        <div class="methodology-step">
+            <div class="step-num">02</div>
+            <div>
+                <h3>Data collection</h3>
+                <p>Live extraction of the practice's Google Business Profile, top 10 competitors in the local search radius, and the 50 highest-volume dental keywords in the city. All sources are public — Google Maps, Google Search, public review data.</p>
+            </div>
+        </div>
+
+        <div class="methodology-step">
+            <div class="step-num">03</div>
+            <div>
+                <h3>14-signal scoring</h3>
+                <p>Each profile is scored across 14 ranking signals Google's local algorithm weights for dental queries: category structure, review velocity, posting cadence, photo freshness, NAP consistency, and 9 others. Red, yellow, green for each.</p>
+            </div>
+        </div>
+
+        <div class="methodology-step">
+            <div class="step-num">04</div>
+            <div>
+                <h3>Competitive triangulation</h3>
+                <p>The practice's scores are compared against the top 5 competitors in their local market. We surface gaps the practice can close in 30 days vs gaps that require 60-90 days of compounding effort.</p>
+            </div>
+        </div>
+
+        <div class="methodology-step">
+            <div class="step-num">05</div>
+            <div>
+                <h3>Analyst review</h3>
+                <p>A human analyst reviews the automated output, validates the recommendations, and writes the action checklist. Pure automation produces generic reports — we use it as input, not output.</p>
+            </div>
+        </div>
+
+        <div class="methodology-step">
+            <div class="step-num">06</div>
+            <div>
+                <h3>Delivery &amp; refresh</h3>
+                <p>The 12-page PDF is delivered within 48 hours of order. For ongoing clients, the methodology runs monthly with a delta report showing what moved, what stuck, and what's next.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ PRINCIPLES ============ -->
+<section class="principles">
+    <div class="container-narrow">
+        <div class="section-label">How we operate</div>
+        <h2>The <em>four principles</em> we don't break.</h2>
+
+        <div class="principle">
+            <div class="num">01</div>
+            <div>
+                <h3>Transparent pricing</h3>
+                <p>Every price is on our site. No "request a quote." No discovery call gatekeeping. The price you see is the price you pay. If it doesn't fit your budget, you'll know in 10 seconds, not after a 30-minute sales call.</p>
+            </div>
+        </div>
+
+        <div class="principle">
+            <div class="num">02</div>
+            <div>
+                <h3>Cancel anytime</h3>
+                <p>Our retainer has no minimum commitment. If we're not delivering value in any given month, you cancel and we part ways. Long contracts are how agencies trap clients who would otherwise leave. We'd rather earn the business every month.</p>
+            </div>
+        </div>
+
+        <div class="principle">
+            <div class="num">03</div>
+            <div>
+                <h3>Refunds without friction</h3>
+                <p>If the audit doesn't deliver value, reply to the delivery email within 7 days and we refund you. No forms, no calls, no "let us address your concerns." A refund is faster and cleaner than a bad client relationship.</p>
+            </div>
+        </div>
+
+        <div class="principle">
+            <div class="num">04</div>
+            <div>
+                <h3>Honest scope, honest timelines</h3>
+                <p>Google Maps rankings move slowly. We tell clients that upfront. If a practice needs new patients in 30 days, GBP optimization isn't the fastest path — Google Ads is. We'd rather lose a sale than set a client up for disappointment.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ FOUNDER ============ -->
+<section class="founder-section">
+    <div class="container-narrow">
+        <div class="section-label">Leadership</div>
+        <h2>Founder &amp; principal analyst.</h2>
+
+        <div class="founder-card">
+            <div class="founder-photo">AS</div>
+            <div>
+                <h3>Aamir Siddiqui</h3>
+                <div class="title">Founder · Local Growth Insights</div>
+                <p>Aamir has spent the last decade building businesses across content, e-commerce, and technical analytics. Local Growth Insights grew out of work he did analyzing Google Business Profile performance for dental practices in his network — practices that were paying $3K-$8K/month to agencies and getting marginal returns.</p>
+                <p>He leads the methodology, runs the analyst team, and works directly with retainer clients. Reachable on every Slack channel; responds within 2-4 hours during US business hours.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section style="padding: 80px 0 100px; text-align: center;">
+    <div class="container-narrow">
+        <h2>The fastest way to evaluate us is to <em>buy something small.</em></h2>
+        <p style="font-size: 18px; color: var(--ink-3); max-width: 560px; margin: 0 auto 32px;">$97 for a complete audit. 48-hour turnaround. Full refund if it's not useful. Better than any sales call we could have.</p>
+        <a href="report.html" class="btn-primary">Get the $97 audit <span class="arrow">→</span></a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <div class="logo-mark">L</div>
+                    Local Growth Insights
+                </a>
+                <p>Google Business Profile audits and management for US dental practices. Data-driven. Flat-priced. No retainer gatekeeping.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="report.html">The $97 audit</a></li>
+                    <li><a href="services.html">All services</a></li>
+                    <li><a href="grade.html">Free GBP grade</a></li>
+                    <li><a href="case-studies.html">Case studies</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="insights/index.html">Insights</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy.html">Privacy policy</a></li>
+                    <li><a href="terms.html">Terms of service</a></li>
+                    <li><a href="refunds.html">Refund policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>© 2026 Local Growth Insights. All rights reserved.</div>
+            <div>hello@localgrowthinsights.com · +1 (XXX) XXX-XXXX</div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

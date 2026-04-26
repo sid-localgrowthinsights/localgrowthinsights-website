@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The $97 GBP Audit · Local Growth Insights</title>
+<meta name="description" content="A 12-page custom audit of your dental practice's Google Business Profile. Delivered in 48 hours. $97 flat. No subscriptions, no upsells.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<style>
+/* Page-specific */
+.report-layout {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 80px;
+    padding: 80px 0;
+}
+
+@media (max-width: 900px) {
+    .report-layout { grid-template-columns: 1fr; gap: 40px; padding: 60px 0; }
+}
+
+/* Left column */
+.report-content h2 {
+    font-size: 32px;
+    margin: 48px 0 16px;
+    line-height: 1.2;
+}
+
+.report-content h2:first-child { margin-top: 0; }
+
+.what-you-get {
+    list-style: none;
+    margin: 24px 0;
+    padding: 0;
+}
+
+.what-you-get li {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap: 16px;
+    align-items: start;
+}
+
+.what-you-get li:last-child { border-bottom: none; }
+
+.what-you-get .num {
+    font-family: 'Geist Mono', monospace;
+    font-size: 13px;
+    color: var(--accent-2);
+    font-weight: 500;
+    padding-top: 2px;
+}
+
+.what-you-get .title {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+}
+
+.what-you-get .desc {
+    font-size: 15px;
+    color: var(--ink-3);
+    line-height: 1.5;
+}
+
+/* Process steps */
+.process {
+    margin-top: 32px;
+    counter-reset: step;
+}
+
+.process-step {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 20px;
+    margin-bottom: 24px;
+    align-items: start;
+}
+
+.process-step .step-num {
+    width: 44px;
+    height: 44px;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--accent);
+}
+
+.process-step .step-content h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: var(--ink);
+}
+
+.process-step .step-content p {
+    margin: 0;
+    font-size: 15px;
+    color: var(--ink-3);
+}
+
+/* Right column - sticky checkout */
+.checkout-card {
+    position: sticky;
+    top: 100px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 6px;
+    padding: 36px 32px;
+    box-shadow: 0 30px 80px -30px rgba(10, 14, 18, 0.4);
+}
+
+@media (max-width: 900px) { .checkout-card { position: static; } }
+
+.checkout-card .price-tag {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.checkout-card .price {
+    font-family: 'Fraunces', serif;
+    font-size: 56px;
+    font-weight: 500;
+    color: var(--paper);
+    letter-spacing: -0.03em;
+    line-height: 1;
+}
+
+.checkout-card .billing {
+    font-family: 'Geist Mono', monospace;
+    font-size: 14px;
+    color: var(--ink-4);
+}
+
+.checkout-card .product-name {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: var(--paper);
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+.includes-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 28px;
+    border-top: 1px solid #2A3138;
+    padding-top: 20px;
+}
+
+.includes-list li {
+    padding: 8px 0;
+    padding-left: 24px;
+    position: relative;
+    font-size: 14px;
+    color: var(--paper);
+    line-height: 1.5;
+}
+
+.includes-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #F59E0B;
+    font-weight: 600;
+}
+
+.checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form-field input {
+    width: 100%;
+    background: var(--ink-2);
+    border: 1px solid #2A3138;
+    color: var(--paper);
+    padding: 14px 16px;
+    border-radius: 4px;
+    font-family: 'Geist', sans-serif;
+    font-size: 15px;
+    transition: border-color 0.15s;
+}
+
+.form-field input:focus {
+    outline: none;
+    border-color: #F59E0B;
+}
+
+.form-field input::placeholder { color: var(--ink-4); }
+
+.form-field label {
+    display: block;
+    font-size: 12px;
+    color: var(--ink-4);
+    margin-bottom: 6px;
+    font-family: 'Geist Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.checkout-cta {
+    background: #F59E0B;
+    color: var(--ink);
+    padding: 16px;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Geist', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.15s;
+    margin-top: 8px;
+}
+
+.checkout-cta:hover {
+    background: #FCD34D;
+    transform: translateY(-1px);
+}
+
+.security-note {
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--ink-4);
+    text-align: center;
+    font-family: 'Geist Mono', monospace;
+}
+
+.security-note .icons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 12px;
+    font-size: 11px;
+}
+
+/* Guarantee box */
+.guarantee {
+    background: var(--highlight);
+    padding: 24px;
+    border-radius: 4px;
+    margin-top: 24px;
+    border-left: 3px solid var(--accent-2);
+}
+
+.guarantee h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: var(--ink);
+}
+
+.guarantee p {
+    font-size: 14px;
+    color: var(--ink-2);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Sample report section */
+.sample-section {
+    background: var(--paper-2);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 80px 0;
+}
+
+.sample-cta-box {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 32px;
+    border-radius: 4px;
+    margin-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+
+.sample-cta-box h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+
+.sample-cta-box p {
+    color: var(--ink-3);
+    margin: 0;
+    font-size: 15px;
+}
+
+/* FAQ */
+.faq-list {
+    border-top: 1px solid var(--line);
+    margin-top: 40px;
+}
+
+.faq-item {
+    border-bottom: 1px solid var(--line);
+    padding: 24px 0;
+}
+
+.faq-q {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.faq-q::after {
+    content: '+';
+    font-family: 'Geist Mono', monospace;
+    font-size: 20px;
+    color: var(--accent-2);
+    flex-shrink: 0;
+    transition: transform 0.2s;
+}
+
+.faq-item.open .faq-q::after { transform: rotate(45deg); }
+
+.faq-a {
+    font-size: 15px;
+    color: var(--ink-3);
+    line-height: 1.6;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s, padding 0.3s;
+}
+
+.faq-item.open .faq-a {
+    max-height: 500px;
+    padding-top: 8px;
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo">
+            <div class="logo-mark">L</div>
+            Local Growth Insights
+        </a>
+        <div class="nav-links">
+            <a href="services.html">Services</a>
+            <a href="case-studies.html">Case studies</a>
+            <a href="grade.html">Free grade</a>
+            <a href="insights/index.html">Insights</a>
+            <a href="about.html">About</a>
+            <a href="report.html" class="nav-cta">Get the audit →</a>
+        </div>
+    </div>
+</nav>
+
+<!-- ============ PAGE HEADER ============ -->
+<header class="page-header">
+    <div class="container">
+        <div class="eyebrow">Product · The $97 GBP Audit</div>
+        <h1>A <em>12-page diagnostic</em> of your dental practice's Google visibility.</h1>
+        <p>Delivered in 48 hours. No subscriptions, no consultations to schedule, no upsell gates. You order it, we build it, you receive a PDF in your inbox. That's the whole transaction.</p>
+    </div>
+</header>
+
+<!-- ============ MAIN LAYOUT ============ -->
+<div class="container">
+    <div class="report-layout">
+
+        <!-- LEFT: Content -->
+        <div class="report-content">
+
+            <h2>What you receive</h2>
+            <p style="margin-bottom: 24px;">A custom PDF analysis of your specific practice — your real Google Business Profile, your real competitors, the real keywords in your real city. Not a template with your name swapped in.</p>
+
+            <ul class="what-you-get">
+                <li>
+                    <div class="num">01</div>
+                    <div>
+                        <div class="title">Your current ranking, mapped</div>
+                        <div class="desc">Where you appear on Google Maps for the 10 highest-volume search terms in your city. Position by position.</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="num">02</div>
+                    <div>
+                        <div class="title">The 14-signal scorecard</div>
+                        <div class="desc">Every ranking signal Google considers, scored for your profile. Red, yellow, green. With the exact value or status of each one.</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="num">03</div>
+                    <div>
+                        <div class="title">Top 5 competitor breakdown</div>
+                        <div class="desc">The dentists ranking above you in your city. What categories they use, how many reviews they have, how often they post, what they're doing differently.</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="num">04</div>
+                    <div>
+                        <div class="title">Keyword gap analysis</div>
+                        <div class="desc">The search terms your competitors rank for that you don't. The ones you should be ranking for and aren't.</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="num">05</div>
+                    <div>
+                        <div class="title">30-day action checklist</div>
+                        <div class="desc">A prioritized list of changes — sorted by impact-to-effort ratio. The ones that take 10 minutes and move the needle most are at the top.</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="num">06</div>
+                    <div>
+                        <div class="title">Templates &amp; assets</div>
+                        <div class="desc">10 Google Post drafts, 8 review response templates, a category recommendation list, and Q&amp;A seed questions you can use as-is.</div>
+                    </div>
+                </li>
+            </ul>
+
+            <h2>How we build it</h2>
+            <p>The audit is a real piece of work. Here's exactly what happens after you order:</p>
+
+            <div class="process">
+                <div class="process-step">
+                    <div class="step-num">1</div>
+                    <div class="step-content">
+                        <h4>Order placed (minute 0)</h4>
+                        <p>You enter your practice name, city, and email. Payment processes through Stripe. You get a confirmation email immediately.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">2</div>
+                    <div class="step-content">
+                        <h4>Data collection (hours 1-12)</h4>
+                        <p>Our system pulls your live Google Business Profile, scrapes your top 10 competitors in the city, and ranks the 50 most-searched dental keywords in your zip code.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">3</div>
+                    <div class="step-content">
+                        <h4>Analysis &amp; report build (hours 12-36)</h4>
+                        <p>The data flows into our 14-signal scorecard. A human analyst (us) reviews the output, writes the action checklist, and builds the PDF.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">4</div>
+                    <div class="step-content">
+                        <h4>Delivery (hour 48)</h4>
+                        <p>You get a PDF in your inbox. Read it on your phone, print it for your front desk, share it with your team. It's yours to use however you want.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Who this is for</h2>
+            <p><strong>You should buy this audit if:</strong></p>
+            <ul style="list-style: none; padding: 0; margin: 16px 0;">
+                <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--ink);">
+                    <span style="position: absolute; left: 0; color: var(--accent);">✓</span>
+                    You're a US dental practice not consistently in the top 3 Google Maps results in your city
+                </li>
+                <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--ink);">
+                    <span style="position: absolute; left: 0; color: var(--accent);">✓</span>
+                    You suspect your Google profile is underperforming but don't know exactly why
+                </li>
+                <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--ink);">
+                    <span style="position: absolute; left: 0; color: var(--accent);">✓</span>
+                    You want a clear action plan you can implement yourself, no agency required
+                </li>
+                <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--ink);">
+                    <span style="position: absolute; left: 0; color: var(--accent);">✓</span>
+                    You'd rather know what's wrong now than wait 6 months and guess
+                </li>
+            </ul>
+
+            <p style="margin-top: 24px;"><strong>You should NOT buy this audit if:</strong></p>
+            <ul style="list-style: none; padding: 0; margin: 16px 0;">
+                <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--ink);">
+                    <span style="position: absolute; left: 0; color: var(--accent-2);">✗</span>
+                    You already work with an SEO agency actively managing your GBP
+                </li>
+                <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--ink);">
+                    <span style="position: absolute; left: 0; color: var(--accent-2);">✗</span>
+                    You're consistently ranking #1-3 for your main keywords already
+                </li>
+                <li style="padding: 8px 0; padding-left: 24px; position: relative; color: var(--ink);">
+                    <span style="position: absolute; left: 0; color: var(--accent-2);">✗</span>
+                    You're outside the US — our data sources are calibrated to US local search
+                </li>
+            </ul>
+
+            <h2>The honest version</h2>
+            <p>The $97 audit is a diagnostic, not a magic bullet. It tells you what's broken and how to fix it. The fixes still need to happen — either you do them yourself, or you pay us (or someone else) to do them.</p>
+            <p>Most dentists who order the audit fix the issues themselves. About 1 in 8 hire us for the $249 implementation tier afterward. About 1 in 30 sign up for the $1,497/mo retainer eventually. We're transparent about this because we'd rather you buy the audit knowing exactly what it is.</p>
+        </div>
+
+        <!-- RIGHT: Sticky Checkout -->
+        <aside>
+            <div class="checkout-card">
+                <div class="price-tag">
+                    <span class="price">$97</span>
+                    <span class="billing">USD · one-time</span>
+                </div>
+                <div class="product-name">The GBP Audit</div>
+
+                <ul class="includes-list">
+                    <li>12-page custom PDF report</li>
+                    <li>14-signal GBP scorecard</li>
+                    <li>Top 5 competitor analysis</li>
+                    <li>30-day action checklist</li>
+                    <li>10 Google Post templates</li>
+                    <li>8 review response scripts</li>
+                    <li>48-hour delivery guarantee</li>
+                </ul>
+
+                <form class="checkout-form" onsubmit="handleOrder(event)">
+                    <div class="form-field">
+                        <label>Practice name</label>
+                        <input type="text" name="practice" placeholder="e.g. Smile Bright Family Dental" required>
+                    </div>
+                    <div class="form-field">
+                        <label>City &amp; state</label>
+                        <input type="text" name="city" placeholder="Fort Worth, TX" required>
+                    </div>
+                    <div class="form-field">
+                        <label>Email for delivery</label>
+                        <input type="email" name="email" placeholder="you@yourpractice.com" required>
+                    </div>
+                    <button type="submit" class="checkout-cta">Continue to Payment →</button>
+                </form>
+
+                <div class="security-note">
+                    Secure checkout via Stripe<br>
+                    <div class="icons">
+                        <span>VISA</span>
+                        <span>MC</span>
+                        <span>AMEX</span>
+                        <span>ACH</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="guarantee">
+                <h4>Refund guarantee</h4>
+                <p>If the report doesn't tell you anything useful about your practice, reply to the delivery email within 7 days and we'll refund the full $97. No forms, no friction.</p>
+            </div>
+        </aside>
+
+    </div>
+</div>
+
+<!-- ============ SAMPLE REPORT CTA ============ -->
+<section class="sample-section">
+    <div class="container-narrow">
+        <div class="section-label">Before you order</div>
+        <h2>Want to see what a finished report looks like?</h2>
+        <p style="font-size: 17px; color: var(--ink-3); max-width: 620px; margin-bottom: 0;">We'll send you a redacted sample from a previous audit. Practice name and city removed; everything else — the data, the analysis, the action items — is real.</p>
+
+        <div class="sample-cta-box">
+            <div>
+                <h4>Get a sample report</h4>
+                <p>Free · delivered in 5 minutes · no signup</p>
+            </div>
+            <a href="mailto:hello@localgrowthinsights.com?subject=Sample%20report%20please" class="btn-primary">
+                Email me a sample <span class="arrow">→</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section>
+    <div class="container-narrow">
+        <div class="section-label">Last questions</div>
+        <h2>Things people ask <em>before they order</em>.</h2>
+
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-q">Will the report give me anything I couldn't figure out myself?</div>
+                <div class="faq-a">If you're willing to spend 15-20 hours analyzing your competitors, mapping your keywords, scoring 14 ranking signals, and synthesizing it into a 30-day plan, yes — you could do this yourself. Most dentists don't have those 20 hours. The report compresses a $5,000 consulting engagement into a $97 PDF you read in 30 minutes.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">What's the difference between this and the $249 tier?</div>
+                <div class="faq-a">The $97 audit is the report only — you read it and execute changes yourself (or have your team do it). The $249 tier includes the audit PLUS we implement the top 10 fixes for you within 7 days: category corrections, business description rewrite, Q&amp;A seeding, the first 4 Google Posts, and review response templates loaded into your account. If you don't have time to execute, $249 is the better value.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Do I need to give you any login info to my Google account?</div>
+                <div class="faq-a">For the $97 audit: No. We use only public data about your profile. For the $249 implementation tier: Yes, manager-level access (not owner) so we can make changes. The audit alone never requires any credentials.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">What format is the report in?</div>
+                <div class="faq-a">PDF, around 5MB. Optimized for both screen reading and printing. Each page is self-contained so you can print individual sections to share with your team.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Can I order audits for multiple practices?</div>
+                <div class="faq-a">Yes. If you own or work with 3+ practices, email hello@localgrowthinsights.com and we'll set up a multi-practice order at a per-audit discount.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">What if I need it faster than 48 hours?</div>
+                <div class="faq-a">We offer 24-hour rush delivery for an additional $50. Email us after ordering and we'll prioritize. Honestly though, 48 hours is fast — most agencies take 2-3 weeks for a comparable analysis.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <div class="logo-mark">L</div>
+                    Local Growth Insights
+                </a>
+                <p>Google Business Profile audits and management for US dental practices. Data-driven. Flat-priced. No retainer gatekeeping.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="report.html">The $97 audit</a></li>
+                    <li><a href="services.html">All services</a></li>
+                    <li><a href="grade.html">Free GBP grade</a></li>
+                    <li><a href="case-studies.html">Case studies</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="insights/index.html">Insights</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy.html">Privacy policy</a></li>
+                    <li><a href="terms.html">Terms of service</a></li>
+                    <li><a href="refunds.html">Refund policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>© 2026 Local Growth Insights. All rights reserved.</div>
+            <div>hello@localgrowthinsights.com · +1 (XXX) XXX-XXXX</div>
+        </div>
+    </div>
+</footer>
+
+<script>
+// FAQ accordion
+document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    q.addEventListener('click', () => {
+        const open = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!open) item.classList.add('open');
+    });
+});
+
+// Order form - placeholder for Stripe/Gumroad integration
+function handleOrder(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const practice = formData.get('practice');
+    const city = formData.get('city');
+    const email = formData.get('email');
+    
+    // TODO: Replace with your Gumroad/Stripe checkout URL
+    const gumroadUrl = `https://localgrowthinsights.gumroad.com/l/audit?` +
+        `email=${encodeURIComponent(email)}&` +
+        `practice=${encodeURIComponent(practice)}&` +
+        `city=${encodeURIComponent(city)}`;
+    
+    window.location.href = gumroadUrl;
+}
+</script>
+
+</body>
+</html>
