@@ -62,6 +62,7 @@
     font-size: 16px;
     margin-bottom: 20px;
     transition: border-color 0.15s, background 0.15s;
+    box-sizing: border-box;
 }
 
 .grade-form-card input:focus {
@@ -134,6 +135,20 @@
     color: var(--ink-3);
     margin-bottom: 8px;
 }
+
+/* Error box */
+.error-box {
+    display: none;
+    background: #FEE2E2;
+    border: 1px solid #FCA5A5;
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin-top: 16px;
+    color: #991B1B;
+    font-size: 14px;
+    text-align: center;
+}
+.error-box.active { display: block; }
 
 /* Results */
 .results-section {
@@ -333,31 +348,33 @@
     <div class="container">
         <div class="eyebrow">Free tool · 60 seconds · no signup</div>
         <h1>How does your dental practice <em>score on Google?</em></h1>
-        <p>Enter your practice name and city. We'll pull your Google Business Profile, score it across 8 ranking signals, and give you a grade. Free, instant, no email required.</p>
+        <p>Enter your practice name and city. We pull your live Google Business Profile, score it across 8 ranking signals, and give you a real grade — instantly.</p>
 
         <!-- ====== FORM ====== -->
         <div class="grade-form-card" id="formCard">
-            <form onsubmit="runGrade(event)">
+            <form onsubmit="runGrade(event)" id="gradeForm">
                 <label class="form-label">Practice name</label>
-                <input type="text" id="practiceName" placeholder="e.g. Smile Bright Family Dental" required>
+                <input type="text" id="practiceName" placeholder="e.g. Smile Bright Family Dental" required autocomplete="off">
 
                 <label class="form-label">City &amp; state</label>
-                <input type="text" id="practiceCity" placeholder="Fort Worth, TX" required>
+                <input type="text" id="practiceCity" placeholder="Fort Worth, TX" required autocomplete="off">
 
                 <button type="submit" id="gradeBtn">
                     Grade my profile <span style="font-family: 'Geist Mono', monospace;">→</span>
                 </button>
 
                 <div class="tiny-print">
-                    No email required. Your data isn't stored. We only use public Google Maps information.
+                    No email required. We only read public Google Maps data. Nothing is stored.
                 </div>
+
+                <div class="error-box" id="errorBox"></div>
             </form>
 
             <!-- Loading state -->
             <div class="loading-state" id="loadingState">
                 <div class="pulse"></div>
                 <div class="step" id="loadStep1">→ Locating your Google Business Profile...</div>
-                <div class="step" id="loadStep2" style="display:none;">→ Scanning your top 5 competitors...</div>
+                <div class="step" id="loadStep2" style="display:none;">→ Reading your profile signals...</div>
                 <div class="step" id="loadStep3" style="display:none;">→ Calculating your scorecard...</div>
             </div>
         </div>
@@ -367,8 +384,8 @@
             <div class="how-grid">
                 <div class="how-item">
                     <div class="num">01</div>
-                    <h4>Public data only</h4>
-                    <p>We pull what anyone with time could find — your GBP listing, review counts, posting activity, photo count.</p>
+                    <h4>Live Google data</h4>
+                    <p>We pull real data directly from Google Maps in real time — reviews, photos, hours, rating. Not estimates, not a database.</p>
                 </div>
                 <div class="how-item">
                     <div class="num">02</div>
@@ -378,7 +395,7 @@
                 <div class="how-item">
                     <div class="num">03</div>
                     <h4>Score in 60 seconds</h4>
-                    <p>You see your grade for each signal plus an overall letter grade. No PDF download, no follow-up emails.</p>
+                    <p>You see your grade for each signal plus an overall letter grade. No PDF download, no follow-up emails, no catch.</p>
                 </div>
             </div>
         </div>
@@ -390,16 +407,16 @@
     <div class="container">
         <div class="section-label">Your scorecard</div>
         <h2 style="margin-bottom: 16px;">Here's where you <em>currently stand.</em></h2>
-        <p style="font-size: 16px; color: var(--ink-3); margin-bottom: 40px; max-width: 620px;">This is a preview based on public Google data. The full $97 audit includes 6 more signals, full competitor analysis, and a 30-day action plan.</p>
+        <p style="font-size: 16px; color: var(--ink-3); margin-bottom: 40px; max-width: 620px;">Based on live Google Maps data pulled right now. The full $97 audit includes 6 more signals, full competitor breakdown, and a 30-day action plan.</p>
 
         <div class="scorecard">
             <div class="scorecard-header">
                 <div>
-                    <div class="label">Free GBP scorecard</div>
+                    <div class="label">Free GBP scorecard · Live data</div>
                     <h3 id="resultPractice">—</h3>
                     <div class="city" id="resultCity">—</div>
                 </div>
-                <div class="overall-grade" id="overallGrade">C</div>
+                <div class="overall-grade" id="overallGrade">—</div>
             </div>
 
             <div class="scorecard-body">
@@ -497,54 +514,30 @@
         </div>
         <div class="footer-bottom">
             <div>© 2026 Local Growth Insights. All rights reserved.</div>
-            <div>hello@localgrowthinsights.com · +1 (XXX) XXX-XXXX</div>
+            <div>hello@localgrowthinsights.com · (813) 544-6244</div>
         </div>
     </div>
 </footer>
 
 <script>
-/*
-=================================================================
-GBP GRADE TOOL — DEMO/PROTOTYPE LOGIC
-=================================================================
-This currently uses simulated data. To make it real:
+const WORKER_URL = 'https://gbp-grader.sid-localgrowthinsights.workers.dev';
 
-1. Replace the simulateScrape() function with an API call to your 
-   backend (Python scraper that uses Google Places API or your existing 
-   GBP scraper script).
-
-2. The backend should accept practice name + city, return JSON like:
-   {
-     reviews: 19,
-     velocity: 2,
-     rating: 4.2,
-     categories: 1,
-     photos: 14,
-     posts: 0,
-     qa: 0,
-     completeness: 60
-   }
-
-3. The grading logic below converts those values into letter grades.
-=================================================================
-*/
-
-const form = document.querySelector('form');
+const gradeForm = document.getElementById('gradeForm');
 const formCard = document.getElementById('formCard');
 const loadingState = document.getElementById('loadingState');
 const resultsSection = document.getElementById('resultsSection');
-const gradeBtn = document.getElementById('gradeBtn');
+const errorBox = document.getElementById('errorBox');
 
 async function runGrade(e) {
     e.preventDefault();
-    const practice = document.getElementById('practiceName').value;
-    const city = document.getElementById('practiceCity').value;
+    const practice = document.getElementById('practiceName').value.trim();
+    const city = document.getElementById('practiceCity').value.trim();
 
-    // Show loading state
-    form.style.display = 'none';
+    errorBox.classList.remove('active');
+    errorBox.textContent = '';
+    gradeForm.style.display = 'none';
     loadingState.classList.add('active');
 
-    // Animate steps
     setTimeout(() => {
         document.getElementById('loadStep1').style.display = 'none';
         document.getElementById('loadStep2').style.display = 'block';
@@ -554,85 +547,67 @@ async function runGrade(e) {
         document.getElementById('loadStep3').style.display = 'block';
     }, 2400);
 
-    // Simulate the scrape (REPLACE THIS WITH REAL API CALL)
-    const data = await simulateScrape(practice, city);
+    try {
+        const params = new URLSearchParams({ practice, city });
+        const res = await fetch(`${WORKER_URL}?${params}`);
+        const data = await res.json();
 
-    // Wait a bit more for the third step animation
-    setTimeout(() => {
-        renderResults(practice, city, data);
-    }, 3600);
-}
+        if (!res.ok || data.error) throw new Error(data.error || 'Practice not found on Google Maps.');
 
-async function simulateScrape(practice, city) {
-    // Demo data - generate semi-realistic scores based on practice name length (deterministic)
-    // In production, replace this with a real fetch() to your backend
-    await new Promise(r => setTimeout(r, 3500));
+        setTimeout(() => renderResults(practice, city, data), 3200);
 
-    // Deterministic pseudo-random based on input string
-    const seed = practice.length + city.length;
-    const rand = (max) => ((seed * 9301 + 49297) % 233280) / 233280 * max;
-
-    return {
-        reviews: 12 + Math.floor(rand(45)),       // 12-57
-        velocity: Math.floor(rand(8)),             // 0-7
-        rating: (3.8 + rand(1.2)).toFixed(1),     // 3.8-5.0
-        categories: 1 + Math.floor(rand(3)),       // 1-3
-        photos: 8 + Math.floor(rand(50)),          // 8-58
-        posts: Math.floor(rand(4)),                // 0-3
-        qa: Math.floor(rand(6)),                   // 0-5
-        completeness: 50 + Math.floor(rand(40))    // 50-90
-    };
-}
-
-function gradeFor(value, thresholds) {
-    // thresholds: [Athresh, Bthresh, Cthresh, Dthresh] — value >= threshold = that grade
-    if (value >= thresholds[0]) return 'A';
-    if (value >= thresholds[1]) return 'B';
-    if (value >= thresholds[2]) return 'C';
-    if (value >= thresholds[3]) return 'D';
-    return 'F';
+    } catch (err) {
+        loadingState.classList.remove('active');
+        gradeForm.style.display = 'block';
+        resetLoadingSteps();
+        errorBox.textContent = err.message || 'Something went wrong. Please try again.';
+        errorBox.classList.add('active');
+    }
 }
 
 function renderResults(practice, city, data) {
-    // Calculate grades
-    const reviewsG = gradeFor(data.reviews, [50, 35, 20, 10]);
-    const velocityG = gradeFor(data.velocity, [6, 4, 2, 1]);
-    const ratingG = gradeFor(parseFloat(data.rating), [4.7, 4.4, 4.0, 3.5]);
-    const categoriesG = gradeFor(data.categories, [4, 3, 2, 1]);
-    const photosG = gradeFor(data.photos, [50, 30, 15, 8]);
-    const postsG = gradeFor(data.posts, [4, 2, 1, 0.5]);
-    const qaG = gradeFor(data.qa, [10, 5, 3, 1]);
-    const profileG = gradeFor(data.completeness, [85, 75, 60, 40]);
+    const reviewsG    = gradeFor(data.reviews,            [50, 35, 20, 10]);
+    const velocityG   = gradeFor(data.velocity,           [6, 4, 2, 1]);
+    const ratingG     = gradeFor(parseFloat(data.rating), [4.7, 4.4, 4.0, 3.5]);
+    const categoriesG = gradeFor(data.categories,         [4, 3, 2, 1]);
+    const photosG     = gradeFor(data.photos,             [50, 30, 15, 8]);
+    const postsG      = gradeFor(data.posts,              [4, 2, 1, 0.5]);
+    const qaG         = gradeFor(data.qa,                 [10, 5, 3, 1]);
+    const profileG    = gradeFor(data.completeness,       [85, 75, 60, 40]);
 
-    // Calculate overall (average GPA)
     const gpaMap = { A: 4, B: 3, C: 2, D: 1, F: 0 };
     const grades = [reviewsG, velocityG, ratingG, categoriesG, photosG, postsG, qaG, profileG];
     const avgGpa = grades.reduce((s, g) => s + gpaMap[g], 0) / grades.length;
     const overall = avgGpa >= 3.5 ? 'A' : avgGpa >= 2.5 ? 'B' : avgGpa >= 1.5 ? 'C' : avgGpa >= 0.8 ? 'D' : 'F';
 
-    // Color of overall grade circle
-    const overallGradeEl = document.getElementById('overallGrade');
+    const overallEl = document.getElementById('overallGrade');
     const colorMap = { A: '#047857', B: '#1E40AF', C: '#92400E', D: '#9A3412', F: '#991B1B' };
-    overallGradeEl.style.background = colorMap[overall];
-    overallGradeEl.textContent = overall;
+    overallEl.style.background = colorMap[overall];
+    overallEl.textContent = overall;
 
-    // Populate fields
-    document.getElementById('resultPractice').textContent = practice;
-    document.getElementById('resultCity').textContent = city;
+    document.getElementById('resultPractice').textContent = data.name || practice;
+    document.getElementById('resultCity').textContent = data.address || city;
 
-    setScore('reviews', data.reviews + ' reviews', reviewsG);
-    setScore('velocity', data.velocity + ' new reviews', velocityG);
-    setScore('rating', data.rating + ' stars', ratingG);
+    setScore('reviews',    data.reviews + ' reviews',     reviewsG);
+    setScore('velocity',   data.velocity + ' in 90 days', velocityG);
+    setScore('rating',     data.rating + ' stars',        ratingG);
     setScore('categories', data.categories + ' selected', categoriesG);
-    setScore('photos', data.photos + ' photos', photosG);
-    setScore('posts', data.posts + ' posts', postsG);
-    setScore('qa', data.qa + ' answers', qaG);
-    setScore('profile', data.completeness + '%', profileG);
+    setScore('photos',     data.photos + ' photos',       photosG);
+    setScore('posts',      data.posts + ' posts',         postsG);
+    setScore('qa',         data.qa + ' answers',          qaG);
+    setScore('profile',    data.completeness + '%',       profileG);
 
-    // Hide form, show results
     formCard.style.display = 'none';
     resultsSection.classList.add('active');
     resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function gradeFor(value, thresholds) {
+    if (value >= thresholds[0]) return 'A';
+    if (value >= thresholds[1]) return 'B';
+    if (value >= thresholds[2]) return 'C';
+    if (value >= thresholds[3]) return 'D';
+    return 'F';
 }
 
 function setScore(prefix, value, grade) {
@@ -642,16 +617,21 @@ function setScore(prefix, value, grade) {
     gradeEl.className = 'grade-badge grade-' + grade;
 }
 
-function resetForm() {
-    formCard.style.display = 'block';
-    form.style.display = 'block';
-    loadingState.classList.remove('active');
-    resultsSection.classList.remove('active');
-    document.getElementById('practiceName').value = '';
-    document.getElementById('practiceCity').value = '';
+function resetLoadingSteps() {
     document.getElementById('loadStep1').style.display = 'block';
     document.getElementById('loadStep2').style.display = 'none';
     document.getElementById('loadStep3').style.display = 'none';
+}
+
+function resetForm() {
+    formCard.style.display = 'block';
+    gradeForm.style.display = 'block';
+    loadingState.classList.remove('active');
+    resultsSection.classList.remove('active');
+    errorBox.classList.remove('active');
+    document.getElementById('practiceName').value = '';
+    document.getElementById('practiceCity').value = '';
+    resetLoadingSteps();
     formCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 </script>
