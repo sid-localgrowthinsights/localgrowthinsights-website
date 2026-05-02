@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Services · Local Growth Insights</title>
-<meta name="description" content="Three transparent service tiers for US dental practices: $97 audit, $249 audit + fix, $1,497/mo Local Dominance retainer.">
+<meta name="description" content="Four transparent service tiers for US dental practices: $147 audit, $247 profile optimization, $297/mo review management, $1,497/mo Local Dominance retainer.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,6 +12,220 @@
 <link rel="stylesheet" href="styles.css">
 
 <style>
+/* ── Pricing cards grid ───────────────────────────────────────── */
+.pricing-section {
+    padding: 80px 0;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 48px;
+}
+
+.pricing-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: box-shadow 0.2s;
+}
+
+.pricing-card:hover {
+    box-shadow: 0 20px 40px -20px rgba(10,14,18,0.12);
+}
+
+.pricing-card.star {
+    border: 2px solid #1a5490;
+    position: relative;
+}
+
+.most-popular {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1a5490;
+    color: white;
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 4px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.card-badge {
+    display: inline-block;
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 10px;
+    border-radius: 3px;
+    width: fit-content;
+}
+
+.badge-onetime {
+    background: var(--paper-2);
+    color: var(--ink-3);
+}
+
+.badge-recurring {
+    background: #D1FAE5;
+    color: #065F46;
+}
+
+.badge-star {
+    background: #DBEAFE;
+    color: #1E40AF;
+}
+
+.card-tier {
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-4);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.card-name {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0;
+}
+
+.card-price {
+    font-family: 'Fraunces', serif;
+    font-size: 40px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1;
+}
+
+.card-price .unit {
+    font-family: 'Geist', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--ink-3);
+}
+
+.card-tagline {
+    font-size: 14px;
+    color: var(--ink-3);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.card-divider {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 0;
+}
+
+.card-section-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-4);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.card-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.card-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.4;
+}
+
+.check-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-size: 9px;
+    font-weight: 600;
+}
+
+.check-yes {
+    background: #D1FAE5;
+    color: #065F46;
+}
+
+.check-no {
+    background: var(--paper-2);
+    color: var(--ink-4);
+}
+
+.saves-banner {
+    background: #D1FAE5;
+    color: #065F46;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+.card-cta {
+    margin-top: auto;
+}
+
+.card-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+    font-family: 'Geist', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--ink);
+    transition: background 0.15s, color 0.15s;
+}
+
+.card-btn:hover {
+    background: var(--ink);
+    color: var(--paper);
+}
+
+.card-btn-star {
+    background: #1a5490;
+    color: white;
+    border-color: transparent;
+}
+
+.card-btn-star:hover {
+    background: #0d2c54;
+    color: white;
+}
+
+/* ── Tier detail sections ─────────────────────────────────────── */
 .tier-section {
     padding: 80px 0;
     border-bottom: 1px solid var(--line);
@@ -28,6 +242,7 @@
 
 @media (max-width: 900px) {
     .tier-section .container { grid-template-columns: 1fr; gap: 40px; }
+    .pricing-grid { grid-template-columns: 1fr; }
 }
 
 .tier-meta { position: sticky; top: 100px; }
@@ -157,7 +372,7 @@
     white-space: nowrap;
 }
 
-/* Comparison table */
+/* ── Comparison table ─────────────────────────────────────────── */
 .compare-section {
     padding: 80px 0;
     background: var(--ink);
@@ -176,17 +391,17 @@
 }
 
 .compare-table th, .compare-table td {
-    padding: 16px;
+    padding: 14px 16px;
     text-align: left;
     border-bottom: 1px solid #2A3138;
-    font-size: 14px;
+    font-size: 13px;
     vertical-align: top;
 }
 
 .compare-table th {
     background: var(--ink-2);
     font-family: 'Geist Mono', monospace;
-    font-size: 12px;
+    font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: #F59E0B;
@@ -194,23 +409,21 @@
 }
 
 .compare-table tr:hover td { background: var(--ink-2); }
-
 .compare-table .check { color: #34D399; font-weight: 600; }
 .compare-table .dash { color: var(--ink-4); }
 
 @media (max-width: 768px) {
-    .compare-table { font-size: 13px; }
-    .compare-table th, .compare-table td { padding: 12px 8px; }
+    .compare-table { font-size: 12px; }
+    .compare-table th, .compare-table td { padding: 10px 8px; }
 }
 
-.honest-section {
-    padding: 80px 0;
-}
+/* ── Honest section ───────────────────────────────────────────── */
+.honest-section { padding: 80px 0; }
 
 .honest-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    gap: 32px;
     margin-top: 40px;
 }
 
@@ -261,45 +474,167 @@
 <header class="page-header">
     <div class="container">
         <div class="eyebrow">Services</div>
-        <h1>Three tiers. <em>One service.</em> Transparent pricing.</h1>
-        <p>You don't have to guess what you'll pay. We don't have a "request a quote" page. The price is the price, and what you get is detailed below.</p>
+        <h1>Four tiers. <em>Transparent pricing.</em> No retainer gatekeeping.</h1>
+        <p>Start with what you need. Upgrade when it makes sense. The price is the price — no quotes, no sales calls required.</p>
     </div>
 </header>
 
-<!-- ============ TIER 1: AUDIT ============ -->
+<!-- ============ PRICING CARDS ============ -->
+<section class="pricing-section">
+    <div class="container">
+        <div class="section-label">All services</div>
+        <h2>Choose where <em>you want to start.</em></h2>
+        <p style="font-size: 17px; color: var(--ink-3); max-width: 600px; margin-top: 12px;">Most practices start with the $147 audit. The data tells you what to fix. Then you decide how much you want us involved.</p>
+
+        <div class="pricing-grid">
+
+            <!-- Card 1: Audit Report -->
+            <div class="pricing-card">
+                <div class="card-badge badge-onetime">One-time</div>
+                <div class="card-tier">Starter</div>
+                <div class="card-name">Audit Report</div>
+                <div class="card-price">$147 <span class="unit">one time</span></div>
+                <p class="card-tagline">Find out exactly why your practice is invisible on Google — and what to do about it.</p>
+                <hr class="card-divider">
+                <div class="card-section-label">What you get</div>
+                <ul class="card-items">
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>Scored across 18+ Google ranking signals</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>Top 5 local competitors identified and compared</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>Patients you are losing to each competitor — estimated monthly</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>AI visibility score — are you showing up in ChatGPT and Gemini?</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>Revenue gap estimate — monthly dollars flowing past your practice</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>Best keywords patients use to find dentists in your city</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>30-day action plan — what to fix first for fastest results</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>Delivered as a PDF within 48 hours</li>
+                    <li class="card-item"><div class="check-dot check-no">✗</div>No profile work done for you</li>
+                    <li class="card-item"><div class="check-dot check-no">✗</div>No ongoing management</li>
+                </ul>
+                <div class="card-cta">
+                    <a href="report.html" class="card-btn">Get the report</a>
+                </div>
+            </div>
+
+            <!-- Card 2: GBP Optimization -->
+            <div class="pricing-card">
+                <div class="card-badge badge-onetime">One-time</div>
+                <div class="card-tier">Foundation</div>
+                <div class="card-name">GBP Optimization</div>
+                <div class="card-price">$247 <span class="unit">one time</span></div>
+                <p class="card-tagline">Your Google profile rebuilt from the ground up so Google can actually find and rank you.</p>
+                <hr class="card-divider">
+                <div class="card-section-label">What we do for you</div>
+                <ul class="card-items">
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>Profile completeness taken to 100%</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>Up to 10 categories selected — most practices only have 1</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>Business description written to attract patients searching Google</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>All services listed with descriptions patients actually search for</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>10 most-asked patient questions added to your profile</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>15 photos organized and uploaded professionally</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>Completed within 5 business days</li>
+                    <li class="card-item"><div class="check-dot check-no">✗</div>No review management</li>
+                    <li class="card-item"><div class="check-dot check-no">✗</div>No ongoing posts or updates</li>
+                </ul>
+                <div class="card-cta">
+                    <a href="contact.html?service=optimization" class="card-btn">Optimize my profile</a>
+                </div>
+            </div>
+
+            <!-- Card 3: Review Management -->
+            <div class="pricing-card">
+                <div class="card-badge badge-recurring">Monthly recurring</div>
+                <div class="card-tier">Growth</div>
+                <div class="card-name">Review Management</div>
+                <div class="card-price">$297 <span class="unit">/ month</span></div>
+                <p class="card-tagline">Automatically collect reviews from every patient and respond to every review — without lifting a finger.</p>
+                <hr class="card-divider">
+                <div class="card-section-label">What happens every month</div>
+                <ul class="card-items">
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>Dedicated SMS number set up for your practice</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>Review request sent automatically after every patient visit</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>Follow-up reminder sent 48 hours later if no review left</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>Every Google review responded to within 24 hours</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>Instant alert when a negative review lands — you hear first</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>Monthly report — review count, star rating, competitor comparison</li>
+                    <li class="card-item"><div class="check-dot check-no">✗</div>No Google Posts</li>
+                    <li class="card-item"><div class="check-dot check-no">✗</div>No ranking management</li>
+                </ul>
+                <div class="card-cta">
+                    <a href="contact.html?service=reviews" class="card-btn">Start getting reviews</a>
+                </div>
+            </div>
+
+            <!-- Card 4: Local Dominance STAR -->
+            <div class="pricing-card star">
+                <div class="most-popular">Most popular</div>
+                <div class="card-badge badge-star">Monthly recurring</div>
+                <div class="card-tier">Complete</div>
+                <div class="card-name">Local Dominance</div>
+                <div class="card-price">$1,497 <span class="unit">/ month</span></div>
+                <p class="card-tagline">Everything your practice needs to rank above competitors, collect reviews automatically, and never lose a patient to Google again.</p>
+                <hr class="card-divider">
+                <div class="saves-banner">Includes $394 of one-time setup work free in month 1</div>
+                <div class="card-section-label" style="margin-top: 4px;">Month 1 — we set everything up</div>
+                <ul class="card-items">
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>Full audit report — 18+ signal scorecard ($147 value, included)</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>Complete profile rebuild to 100% ($247 value, included)</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>Review acquisition SMS system live from day 1</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>Competitor tracking configured — top 3 rivals monitored</li>
+                </ul>
+                <hr class="card-divider">
+                <div class="card-section-label">Every month after that</div>
+                <ul class="card-items">
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>8 Google Posts per month — keeps your profile active and ranking</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>Review request SMS after every patient visit — fully automated</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>Every review responded to within 24 hours</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>Instant negative review alert — you know before anyone else</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>Fresh photos added monthly — profile stays current</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>Ranking position tracked monthly</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>Competitor gap tracked — how far ahead are you pulling?</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>Monthly PDF report — everything in one clear page</li>
+                    <li class="card-item"><div class="check-dot check-yes">✓</div>Profile kept fully optimized — hours, offers, services always current</li>
+                </ul>
+                <div class="card-cta" style="margin-top: 8px;">
+                    <a href="contact.html?service=dominance" class="card-btn card-btn-star">Get Local Dominance</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ============ TIER 1 DETAIL ============ -->
 <section class="tier-section" id="audit">
     <div class="container">
         <div class="tier-meta">
             <div class="eyebrow">Tier 01 · The diagnostic</div>
-            <div class="price-tag">$97<span class="unit"> once</span></div>
-            <div class="billing">One-time payment · 48-hour delivery</div>
-            <h2>The Audit</h2>
-            <p class="tagline">A 12-page custom report. You implement the changes yourself.</p>
+            <div class="price-tag">$147<span class="unit"> once</span></div>
+            <div class="billing">One-time · 48-hour delivery</div>
+            <h2>Audit Report</h2>
+            <p class="tagline">A detailed custom report. You see exactly where you stand and what to fix.</p>
             <a href="report.html" class="cta">Order the audit <span style="font-family: 'Geist Mono', monospace;">→</span></a>
         </div>
-
         <div class="tier-content">
             <h3>What you receive</h3>
             <ul>
-                <li>12-page PDF report custom-built for your practice and city</li>
-                <li>Your current rankings for the 10 highest-volume keywords in your zip code</li>
-                <li>14-signal GBP scorecard with red / yellow / green for each signal</li>
+                <li>Full PDF report custom-built for your practice and city</li>
+                <li>18+ signal GBP scorecard with red / yellow / green for each signal</li>
+                <li>AI visibility score — are you showing up in ChatGPT and Gemini recommendations?</li>
+                <li>Revenue gap estimate — estimated monthly dollars flowing past your practice to competitors</li>
                 <li>Top 5 competitor breakdown — what they're doing that you aren't</li>
+                <li>Best keywords patients use to find dentists in your city</li>
                 <li>30-day action checklist, prioritized by impact-to-effort ratio</li>
-                <li>10 Google Post drafts, 8 review response templates, category recommendations</li>
+                <li>Review acquisition system — exact 3-step setup guide for your practice</li>
             </ul>
-
-            <h3>How long it takes</h3>
+            <h3>Delivery timeline</h3>
             <ul>
                 <li>Order placed: minute 0</li>
-                <li>Data collection &amp; competitor scrape: hours 1-12</li>
-                <li>Analysis and report build: hours 12-36</li>
-                <li>PDF delivery to your inbox: hour 48</li>
+                <li>Data collection and competitor analysis: hours 1-12</li>
+                <li>Report build and review: hours 12-36</li>
+                <li>PDF delivered to your inbox: within 48 hours</li>
             </ul>
-
             <h3>Best for</h3>
             <ul>
-                <li>Practices that want to know what's wrong but plan to execute themselves</li>
+                <li>Practices that want to know what's wrong before committing to a retainer</li>
                 <li>Owners who don't trust agencies and want raw data they control</li>
                 <li>Anyone considering hiring an SEO firm — the audit shows you what you actually need</li>
             </ul>
@@ -307,117 +642,176 @@
     </div>
 </section>
 
-<!-- ============ TIER 2: BASIC FIX ============ -->
-<section class="tier-section" id="basic-fix">
+<!-- ============ TIER 2 DETAIL ============ -->
+<section class="tier-section" id="optimization">
     <div class="container">
         <div class="tier-meta">
-            <div class="eyebrow">Tier 02 · Diagnostic + execution</div>
-            <div class="price-tag">$249<span class="unit"> once</span></div>
-            <div class="billing">One-time payment · 7-day turnaround</div>
-            <h2>Audit + Basic Fix</h2>
-            <p class="tagline">We run the audit and execute the top 10 fixes for you.</p>
-            <a href="contact.html?service=basic-fix" class="cta">Book the basic fix <span style="font-family: 'Geist Mono', monospace;">→</span></a>
+            <div class="eyebrow">Tier 02 · The foundation</div>
+            <div class="price-tag">$247<span class="unit"> once</span></div>
+            <div class="billing">One-time · 5-day turnaround</div>
+            <h2>GBP Optimization</h2>
+            <p class="tagline">Your Google profile rebuilt from the ground up — done for you, completed in 5 days.</p>
+            <a href="contact.html?service=optimization" class="cta">Optimize my profile <span style="font-family: 'Geist Mono', monospace;">→</span></a>
         </div>
-
         <div class="tier-content">
-            <h3>Everything in The Audit, plus we do the work</h3>
-
+            <h3>What we do for you</h3>
             <div class="deliverable-row">
                 <div>
                     <div class="what">Category corrections</div>
-                    <div class="desc">We fix your primary category and add the 3-4 secondary categories Google rewards but most dentists miss.</div>
+                    <div class="desc">We fix your primary category and add up to 10 secondary categories Google rewards but most dentists miss.</div>
                 </div>
-                <div class="freq">Day 1-2</div>
+                <div class="freq">Day 1</div>
             </div>
-
             <div class="deliverable-row">
                 <div>
                     <div class="what">Business description rewrite</div>
-                    <div class="desc">Your description rewritten to include high-volume keywords, written for both humans and Google's parsing.</div>
+                    <div class="desc">Your description rewritten to include high-volume keywords — written for both patients and Google's parsing engine.</div>
                 </div>
-                <div class="freq">Day 2-3</div>
+                <div class="freq">Day 2</div>
             </div>
-
             <div class="deliverable-row">
                 <div>
                     <div class="what">Q&amp;A seeding</div>
-                    <div class="desc">10 high-relevance questions added to your Q&amp;A section with thoughtful answers (the section Google weights but 90% of dentists ignore).</div>
+                    <div class="desc">10 high-relevance questions added with keyword-rich answers — the section Google weights but 90% of dentists ignore.</div>
                 </div>
-                <div class="freq">Day 3-4</div>
+                <div class="freq">Day 3</div>
             </div>
-
             <div class="deliverable-row">
                 <div>
-                    <div class="what">Initial Google Posts</div>
-                    <div class="desc">First 4 posts created and scheduled — covering services, an offer, a team intro, and a community/practice update.</div>
+                    <div class="what">Services section buildout</div>
+                    <div class="desc">Your "Services" section populated with the procedures patients actually search for — with descriptions.</div>
                 </div>
-                <div class="freq">Day 4-5</div>
+                <div class="freq">Day 4</div>
             </div>
-
             <div class="deliverable-row">
                 <div>
-                    <div class="what">Review response templates loaded</div>
-                    <div class="desc">8 customized response templates for common review scenarios (5-star, 4-star, neutral, complaint) loaded into your account.</div>
+                    <div class="what">15 photos uploaded</div>
+                    <div class="desc">Organized, captioned, and uploaded. Covers exterior, interior, team, and equipment if you provide the photos.</div>
                 </div>
-                <div class="freq">Day 5-6</div>
+                <div class="freq">Day 5</div>
             </div>
-
-            <div class="deliverable-row">
-                <div>
-                    <div class="what">Service list buildout</div>
-                    <div class="desc">Your "Products &amp; Services" section populated with the procedures patients actually search for.</div>
-                </div>
-                <div class="freq">Day 6-7</div>
-            </div>
-
             <h3>What you provide</h3>
             <ul>
                 <li>Manager-level access to your Google Business Profile (not owner — we never ask for that)</li>
                 <li>Approval on the rewritten business description before we publish</li>
-                <li>30 minutes of your time across the 7 days for input and approvals</li>
+                <li>Photos if available — we work with what you have</li>
             </ul>
-
             <h3>Best for</h3>
             <ul>
                 <li>Practices with no time to implement changes themselves</li>
-                <li>Owners who want measurable improvements before committing to ongoing management</li>
-                <li>Multi-practice owners testing one location before scaling</li>
+                <li>Owners who want measurable profile improvements before committing to a retainer</li>
+                <li>Practices who got the $147 audit and want the fixes done for them</li>
             </ul>
         </div>
     </div>
 </section>
 
-<!-- ============ TIER 3: DOMINANCE ============ -->
+<!-- ============ TIER 3 DETAIL ============ -->
+<section class="tier-section" id="reviews">
+    <div class="container">
+        <div class="tier-meta">
+            <div class="eyebrow">Tier 03 · Review growth</div>
+            <div class="price-tag">$297<span class="unit"> /mo</span></div>
+            <div class="billing">Monthly recurring · Cancel anytime</div>
+            <h2>Review Management</h2>
+            <p class="tagline">Automated review requests after every patient visit. Every review responded to. Nothing manual.</p>
+            <a href="contact.html?service=reviews" class="cta">Start getting reviews <span style="font-family: 'Geist Mono', monospace;">→</span></a>
+        </div>
+        <div class="tier-content">
+            <h3>What we do, every month</h3>
+            <div class="deliverable-row">
+                <div>
+                    <div class="what">Dedicated SMS number</div>
+                    <div class="desc">Your practice gets a dedicated US phone number. Review requests come from a number patients recognize as local.</div>
+                </div>
+                <div class="freq">Setup month 1</div>
+            </div>
+            <div class="deliverable-row">
+                <div>
+                    <div class="what">Automated review requests</div>
+                    <div class="desc">SMS sent automatically after every patient visit. Receptionist adds patient name and number to a simple Google Sheet — we handle everything else.</div>
+                </div>
+                <div class="freq">Every visit</div>
+            </div>
+            <div class="deliverable-row">
+                <div>
+                    <div class="what">48-hour follow-up</div>
+                    <div class="desc">If a patient doesn't review after the first message, a polite follow-up goes out 48 hours later. One follow-up only — never spammy.</div>
+                </div>
+                <div class="freq">Automated</div>
+            </div>
+            <div class="deliverable-row">
+                <div>
+                    <div class="what">Review responses</div>
+                    <div class="desc">Every new Google review gets a personalized response within 24 hours. Positive reviews thanked by name. Negative reviews escalated to you immediately.</div>
+                </div>
+                <div class="freq">Within 24hrs</div>
+            </div>
+            <div class="deliverable-row">
+                <div>
+                    <div class="what">Negative review alert</div>
+                    <div class="desc">Instant notification the moment a 1 or 2 star review lands — you hear about it before any patient does.</div>
+                </div>
+                <div class="freq">Instant</div>
+            </div>
+            <div class="deliverable-row">
+                <div>
+                    <div class="what">Monthly report</div>
+                    <div class="desc">Review count, star rating trend, competitor comparison, and velocity — how fast are you gaining on the market leader?</div>
+                </div>
+                <div class="freq">Monthly</div>
+            </div>
+            <h3>Best for</h3>
+            <ul>
+                <li>Practices with fewer reviews than their main competitor</li>
+                <li>Owners who know they should be asking for reviews but never do</li>
+                <li>Practices that already have a good profile but need consistent review velocity</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ============ TIER 4 DETAIL ============ -->
 <section class="tier-section" id="dominance">
     <div class="container">
         <div class="tier-meta">
-            <div class="eyebrow">Tier 03 · Ongoing management</div>
+            <div class="eyebrow">Tier 04 · Complete management</div>
             <div class="price-tag">$1,497<span class="unit"> /mo</span></div>
-            <div class="billing">Monthly · Cancel anytime</div>
+            <div class="billing">Monthly · 3-month minimum · Cancel after</div>
             <h2>Local Dominance</h2>
-            <p class="tagline">We run your Google Business Profile like a team member would. Hands-on, ongoing.</p>
-            <a href="contact.html?service=dominance" class="cta">Schedule a call <span style="font-family: 'Geist Mono', monospace;">→</span></a>
+            <p class="tagline">We run your entire Google presence like a team member would. Hands-on, every month.</p>
+            <a href="contact.html?service=dominance" class="cta">Get Local Dominance <span style="font-family: 'Geist Mono', monospace;">→</span></a>
         </div>
-
         <div class="tier-content">
-            <h3>What we do, monthly</h3>
-
+            <h3>Month 1 — we build the foundation</h3>
+            <ul>
+                <li>Full 18+ signal audit report produced for your practice ($147 value — included)</li>
+                <li>Complete profile rebuild — categories, description, Q&amp;A, services, photos ($247 value — included)</li>
+                <li>Review acquisition SMS system set up — first requests sent within week 1</li>
+                <li>Competitor tracking configured — top 3 rivals monitored from day 1</li>
+            </ul>
+            <h3>Every month after that</h3>
             <div class="deliverable-row">
                 <div>
                     <div class="what">Google Posts published</div>
-                    <div class="desc">Custom-written posts about your services, offers, and practice updates.</div>
+                    <div class="desc">Custom-written posts about your services, seasonal offers, and practice updates — keeps your profile active and ranking.</div>
                 </div>
                 <div class="freq">2× weekly</div>
             </div>
-
             <div class="deliverable-row">
                 <div>
-                    <div class="what">Review monitoring &amp; response</div>
-                    <div class="desc">Every new review gets a personalized response within 12 hours. Negative reviews escalated to you within 1 hour.</div>
+                    <div class="what">Review acquisition + response</div>
+                    <div class="desc">Automated SMS review requests after every visit, 48-hour follow-up, and personal response to every review within 24 hours.</div>
                 </div>
                 <div class="freq">Daily</div>
             </div>
-
+            <div class="deliverable-row">
+                <div>
+                    <div class="what">Negative review alert</div>
+                    <div class="desc">Instant notification the moment a 1 or 2 star review lands. You hear about it before any patient does.</div>
+                </div>
+                <div class="freq">Instant</div>
+            </div>
             <div class="deliverable-row">
                 <div>
                     <div class="what">Competitor watch</div>
@@ -425,134 +819,123 @@
                 </div>
                 <div class="freq">Weekly</div>
             </div>
-
             <div class="deliverable-row">
                 <div>
-                    <div class="what">Q&amp;A management</div>
-                    <div class="desc">New customer questions answered within 24 hours. Strategic Q&amp;A added to capture long-tail searches.</div>
-                </div>
-                <div class="freq">Continuous</div>
-            </div>
-
-            <div class="deliverable-row">
-                <div>
-                    <div class="what">Photo &amp; media uploads</div>
-                    <div class="desc">5-10 new photos per month with proper captions and geo-tags. Optional video uploads if you provide raw clips.</div>
+                    <div class="what">Photo uploads</div>
+                    <div class="desc">5-10 new photos monthly with captions and geo-tags. Profile stays fresh — Google rewards active profiles.</div>
                 </div>
                 <div class="freq">Monthly</div>
             </div>
-
             <div class="deliverable-row">
                 <div>
-                    <div class="what">Ranking report</div>
-                    <div class="desc">Detailed PDF showing rank changes for your 10 priority keywords, review velocity, profile views, and patient action data.</div>
+                    <div class="what">Full monthly report</div>
+                    <div class="desc">Ranking changes, review velocity, profile views, patient actions, AI visibility, and competitor gap — all in one PDF.</div>
                 </div>
                 <div class="freq">Monthly</div>
             </div>
-
-            <div class="deliverable-row">
-                <div>
-                    <div class="what">Strategy call</div>
-                    <div class="desc">30-minute review call with you — what's working, what we're trying next, what input we need from your team.</div>
-                </div>
-                <div class="freq">Quarterly</div>
-            </div>
-
-            <div class="deliverable-row">
-                <div>
-                    <div class="what">Direct Slack channel</div>
-                    <div class="desc">Private channel for fast comms. Most messages answered within 2 hours during US business hours.</div>
-                </div>
-                <div class="freq">Always-on</div>
-            </div>
-
-            <h3>What we don't do (yet)</h3>
-            <ul>
-                <li>Website redesign or copywriting (separate engagement)</li>
-                <li>Google Ads management (we have a partner referral)</li>
-                <li>Social media beyond Google Posts (Instagram, TikTok not included)</li>
-                <li>Patient acquisition funnels or lead magnets (Local Dominance + extras tier)</li>
-            </ul>
-
             <h3>Best for</h3>
             <ul>
                 <li>Practices generating $50K+/month that want consistent new patient flow from Google</li>
-                <li>Owners who tried doing GBP themselves and gave up after 60 days</li>
-                <li>Multi-location practices needing one consistent system across locations</li>
+                <li>Owners who tried managing GBP themselves and gave up after 60 days</li>
+                <li>Practices where one additional implant or invisalign case per month covers the fee many times over</li>
             </ul>
         </div>
     </div>
 </section>
 
-<!-- ============ COMPARISON ============ -->
+<!-- ============ COMPARISON TABLE ============ -->
 <section class="compare-section">
     <div class="container">
         <div class="section-label">Side by side</div>
-        <h2>Compare the <em>three tiers</em>.</h2>
+        <h2>Compare all <em>four tiers.</em></h2>
         <p class="lead">Same underlying data and analysis. Different levels of execution and ongoing support.</p>
 
         <table class="compare-table">
             <thead>
                 <tr>
-                    <th></th>
-                    <th>The Audit · $97</th>
-                    <th>Audit + Fix · $249</th>
-                    <th>Local Dominance · $1,497/mo</th>
+                    <th style="width: 30%;">What's included</th>
+                    <th>Audit · $147</th>
+                    <th>Optimization · $247</th>
+                    <th>Reviews · $297/mo</th>
+                    <th>Dominance · $1,497/mo</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>12-page diagnostic report</strong></td>
+                    <td><strong>18+ signal audit report</strong></td>
                     <td><span class="check">✓</span></td>
+                    <td><span class="dash">—</span></td>
+                    <td><span class="dash">—</span></td>
+                    <td><span class="check">✓ included</span></td>
+                </tr>
+                <tr>
+                    <td><strong>AI visibility score</strong></td>
+                    <td><span class="check">✓</span></td>
+                    <td><span class="dash">—</span></td>
+                    <td><span class="dash">—</span></td>
+                    <td><span class="check">✓ monthly</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Revenue gap estimate</strong></td>
+                    <td><span class="check">✓</span></td>
+                    <td><span class="dash">—</span></td>
+                    <td><span class="dash">—</span></td>
+                    <td><span class="check">✓ monthly</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Competitor analysis</strong></td>
+                    <td><span class="check">✓</span></td>
+                    <td><span class="dash">—</span></td>
+                    <td><span class="check">✓ monthly</span></td>
+                    <td><span class="check">✓ weekly</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Profile rebuilt to 100%</strong></td>
+                    <td><span class="dash">—</span></td>
+                    <td><span class="check">✓ one-time</span></td>
+                    <td><span class="dash">—</span></td>
+                    <td><span class="check">✓ month 1</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Automated review requests</strong></td>
+                    <td><span class="dash">—</span></td>
+                    <td><span class="dash">—</span></td>
                     <td><span class="check">✓</span></td>
                     <td><span class="check">✓</span></td>
                 </tr>
                 <tr>
-                    <td><strong>Top 5 competitor analysis</strong></td>
-                    <td><span class="check">✓</span></td>
-                    <td><span class="check">✓</span></td>
-                    <td><span class="check">✓</span></td>
+                    <td><strong>Review responses</strong></td>
+                    <td><span class="dash">—</span></td>
+                    <td><span class="dash">—</span></td>
+                    <td><span class="check">✓ within 24hrs</span></td>
+                    <td><span class="check">✓ within 24hrs</span></td>
                 </tr>
                 <tr>
-                    <td><strong>Action checklist provided</strong></td>
-                    <td><span class="check">✓</span></td>
-                    <td><span class="check">✓</span></td>
-                    <td><span class="check">✓</span></td>
+                    <td><strong>Negative review alert</strong></td>
+                    <td><span class="dash">—</span></td>
+                    <td><span class="dash">—</span></td>
+                    <td><span class="check">✓ instant</span></td>
+                    <td><span class="check">✓ instant</span></td>
                 </tr>
                 <tr>
-                    <td><strong>We execute the top fixes</strong></td>
+                    <td><strong>Google Posts</strong></td>
                     <td><span class="dash">—</span></td>
-                    <td><span class="check">✓ (one-time)</span></td>
-                    <td><span class="check">✓ (ongoing)</span></td>
+                    <td><span class="dash">—</span></td>
+                    <td><span class="dash">—</span></td>
+                    <td><span class="check">✓ 2× weekly</span></td>
                 </tr>
                 <tr>
-                    <td><strong>Weekly Google Posts</strong></td>
+                    <td><strong>Monthly ranking report</strong></td>
                     <td><span class="dash">—</span></td>
-                    <td><span class="dash">— (4 initial only)</span></td>
-                    <td><span class="check">✓ (2× weekly)</span></td>
+                    <td><span class="dash">—</span></td>
+                    <td><span class="check">✓ reviews only</span></td>
+                    <td><span class="check">✓ full report</span></td>
                 </tr>
                 <tr>
-                    <td><strong>Review monitoring &amp; response</strong></td>
-                    <td><span class="dash">—</span></td>
-                    <td><span class="dash">—</span></td>
-                    <td><span class="check">✓ (daily)</span></td>
-                </tr>
-                <tr>
-                    <td><strong>Monthly ranking reports</strong></td>
-                    <td><span class="dash">—</span></td>
-                    <td><span class="dash">—</span></td>
-                    <td><span class="check">✓</span></td>
-                </tr>
-                <tr>
-                    <td><strong>Direct Slack channel</strong></td>
-                    <td><span class="dash">—</span></td>
-                    <td><span class="dash">—</span></td>
-                    <td><span class="check">✓</span></td>
-                </tr>
-                <tr>
-                    <td><strong>Turnaround time</strong></td>
+                    <td><strong>Turnaround</strong></td>
                     <td>48 hours</td>
-                    <td>7 days</td>
+                    <td>5 days</td>
+                    <td>Ongoing</td>
                     <td>Ongoing</td>
                 </tr>
                 <tr>
@@ -560,6 +943,7 @@
                     <td>None</td>
                     <td>None</td>
                     <td>Cancel anytime</td>
+                    <td>3-month minimum</td>
                 </tr>
             </tbody>
         </table>
@@ -574,20 +958,20 @@
 
         <div class="honest-grid">
             <div class="honest-card">
-                <h4>Most people start with the $97 audit</h4>
-                <p>Roughly 80% of new clients try the audit first. About 1 in 8 then upgrade to the $249 implementation. About 1 in 30 eventually move to Local Dominance. That's normal and expected — the audit is designed to be useful on its own.</p>
+                <h4>Most practices start with the $147 audit</h4>
+                <p>The data tells you exactly what's wrong and what to fix. Many practices implement the changes themselves. Others upgrade to $247 optimization or $297 review management. That's normal and expected.</p>
             </div>
             <div class="honest-card bad">
                 <h4>We won't push you to upgrade</h4>
-                <p>If you bought the $97 audit and the fixes are working, we'd rather you stay there than feel pressured into a retainer you don't need. The retainer makes sense when GBP becomes a meaningful patient acquisition channel for you, not before.</p>
+                <p>If you bought the $147 audit and the fixes are working, we'd rather you stay there than feel pressured into a retainer you don't need. The retainer makes sense when GBP becomes a meaningful patient acquisition channel for you — not before.</p>
             </div>
             <div class="honest-card">
                 <h4>Local Dominance takes 60-90 days to show results</h4>
-                <p>Google Maps rankings move slowly. Most clients see meaningful position changes by month 2-3, not month 1. If you need new patients in 30 days, you need ads, not GBP optimization.</p>
+                <p>Google Maps rankings move slowly. Most practices see meaningful position changes by month 2-3, not month 1. If you need new patients in 30 days, you need ads — not GBP optimization.</p>
             </div>
             <div class="honest-card bad">
                 <h4>We turn down clients sometimes</h4>
-                <p>If you're already ranking #1-3 for your main keywords, or already have 200+ reviews, or already work with a dedicated GBP agency, we'll tell you that the audit isn't worth your money. Saving you $97 is worth more than booking a $97 sale.</p>
+                <p>If you're already ranking top 3 for your main keywords, or already have 200+ reviews, or already work with a dedicated GBP agency — we'll tell you. Saving you $147 is worth more than booking a $147 sale.</p>
             </div>
         </div>
     </div>
@@ -597,10 +981,10 @@
 <section style="padding: 60px 0 100px; text-align: center;">
     <div class="container-narrow">
         <h2>Not sure which tier?</h2>
-        <p style="font-size: 18px; color: var(--ink-3); max-width: 540px; margin: 0 auto 32px;">Start with the free grade or the $97 audit. They're refundable, fast, and give you everything you need to decide.</p>
+        <p style="font-size: 18px; color: var(--ink-3); max-width: 540px; margin: 0 auto 32px;">Start with the free grade — it takes 60 seconds and shows you exactly where you stand before you spend anything.</p>
         <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
             <a href="grade.html" class="btn-secondary">Get free grade first</a>
-            <a href="report.html" class="btn-primary">Get the $97 audit <span class="arrow">→</span></a>
+            <a href="report.html" class="btn-primary">Get the $147 audit <span class="arrow">→</span></a>
         </div>
     </div>
 </section>
@@ -618,7 +1002,7 @@
             <div class="footer-col">
                 <h4>Product</h4>
                 <ul>
-                    <li><a href="report.html">The $97 audit</a></li>
+                    <li><a href="report.html">The $147 audit</a></li>
                     <li><a href="services.html">All services</a></li>
                     <li><a href="grade.html">Free GBP grade</a></li>
                     <li><a href="case-studies.html">Case studies</a></li>
@@ -643,7 +1027,7 @@
         </div>
         <div class="footer-bottom">
             <div>© 2026 Local Growth Insights. All rights reserved.</div>
-            <div>hello@localgrowthinsights.com · +1 (XXX) XXX-XXXX</div>
+            <div>hello@localgrowthinsights.com · (813) 544-6244</div>
         </div>
     </div>
 </footer>
