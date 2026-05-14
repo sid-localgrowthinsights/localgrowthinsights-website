@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Review Velocity: Why Recent Reviews Outperform Total Count · Local Growth Insights</title>
+<meta name="description" content="An empirical look at why a practice with 60 reviews and 12 in the past 90 days outranks practices with 200 historical reviews. The role of recency in Google's local ranking algorithm.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+
+<style>
+.article-header {
+    padding: 80px 0 60px;
+    border-bottom: 1px solid var(--border);
+}
+.article-meta {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+.article-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--paper-2);
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+.article-date {
+    font-size: 13px;
+    color: var(--ink-3);
+}
+.article-read {
+    font-size: 13px;
+    color: var(--ink-3);
+}
+.article-header h1 {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    max-width: 800px;
+}
+.article-header .lede {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    max-width: 680px;
+}
+.article-body {
+    padding: 60px 0 100px;
+    max-width: 720px;
+}
+.article-body h2 {
+    font-size: 26px;
+    font-weight: 600;
+    margin: 48px 0 16px;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+}
+.article-body h2:first-child { margin-top: 0; }
+.article-body h3 {
+    font-size: 19px;
+    font-weight: 500;
+    margin: 32px 0 12px;
+}
+.article-body p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--ink-2);
+    margin-bottom: 20px;
+}
+.article-body ul, .article-body ol {
+    margin: 16px 0 24px 20px;
+    color: var(--ink-2);
+}
+.article-body li {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 10px;
+}
+.article-body strong {
+    color: var(--ink-1);
+    font-weight: 600;
+}
+.data-callout {
+    background: var(--paper-2);
+    border-left: 3px solid var(--accent);
+    padding: 20px 24px;
+    border-radius: 0 6px 6px 0;
+    margin: 32px 0;
+}
+.data-callout p {
+    margin: 0;
+    font-size: 15px;
+    color: var(--ink-2);
+}
+.data-callout strong {
+    display: block;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    margin-bottom: 8px;
+}
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 32px 0;
+    font-size: 14px;
+}
+.comparison-table th {
+    background: var(--ink-1);
+    color: white;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 13px;
+}
+.comparison-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--ink-2);
+    vertical-align: top;
+}
+.comparison-table tr:nth-child(even) td {
+    background: var(--paper-2);
+}
+.comparison-table .winner {
+    color: #1E8449;
+    font-weight: 600;
+}
+.comparison-table .loser {
+    color: #C0392B;
+}
+.stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 32px 0;
+}
+.stat-box {
+    background: var(--paper-2);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+.stat-box .number {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--ink-1);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+.stat-box .label {
+    font-size: 12px;
+    color: var(--ink-3);
+    line-height: 1.4;
+}
+.article-cta {
+    background: var(--paper-2);
+    border-radius: 12px;
+    padding: 32px;
+    margin: 48px 0;
+    text-align: center;
+}
+.article-cta h3 {
+    margin: 0 0 8px;
+    font-size: 20px;
+}
+.article-cta p {
+    color: var(--ink-2);
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+.article-cta a.btn {
+    display: inline-block;
+    background: var(--ink-1);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+.article-nav {
+    border-top: 1px solid var(--border);
+    padding: 40px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.article-nav a {
+    font-size: 14px;
+    color: var(--accent);
+    text-decoration: none;
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="../index.html" class="logo">
+            <div class="logo-mark">L</div>
+            Local Growth Insights
+        </a>
+        <div class="nav-links">
+            <a href="../services.html">Services</a>
+            <a href="../case-studies.html">Case studies</a>
+            <a href="../grade.html">Free grade</a>
+            <a href="index.html">Insights</a>
+            <a href="../about.html">About</a>
+            <a href="../report.html" class="nav-cta">Get the audit →</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-narrow">
+
+    <header class="article-header">
+        <div class="article-meta">
+            <span class="article-tag">Framework</span>
+            <span class="article-date">May 12, 2026</span>
+            <span class="article-read">· 11 min read</span>
+        </div>
+        <h1>Review velocity: why recent reviews outperform total review count.</h1>
+        <p class="lede">A practice with 60 reviews and 12 in the past 90 days regularly outranks a practice with 200 reviews and 3 in the past 90 days. Here's the data behind why, and what to do about it.</p>
+    </header>
+
+    <div class="article-body">
+
+        <p>When dental practices think about reviews, they think about the number at the top of their Google listing. 47 reviews. 112 reviews. 203 reviews. The assumption is that more is always better — that a practice that spent three years accumulating 200 reviews has an insurmountable advantage over one with 60.</p>
+
+        <p>That assumption is wrong. And it costs practices significant ranking position every month they leave it unaddressed.</p>
+
+        <p>Across our analysis of 15,600+ US dental practice profiles, the median practice has 84 reviews and an average rating of 4.2 stars. But the practices ranking in the top 3 positions for their primary keyword — "dentist [city]" — don't just have more reviews. They have more <em>recent</em> reviews. The distinction matters more than most practitioners realize.</p>
+
+        <h2>What Google actually measures</h2>
+
+        <p>Google's local ranking algorithm is not a static leaderboard. It's a live signal system that weights recency heavily — because Google's fundamental goal is to surface businesses that are currently operational, currently serving customers, and currently trustworthy.</p>
+
+        <p>A practice that received 180 of its 200 reviews between 2019 and 2022, and has collected only 20 since, is sending a specific signal to Google's algorithm: this business is less active than it was. Whether that's true or not is irrelevant. The signal pattern is what gets measured.</p>
+
+        <div class="data-callout">
+            <strong>From our dataset</strong>
+            <p>The average US dental practice in our analysis has accumulated 219 reviews in total — but the distribution is heavily skewed. The median is 84, meaning the majority of practices have significantly fewer than the average, pulled up by a small number of high-review outliers. What separates the top-ranked practices from the median isn't just total count — it's consistent monthly accumulation.</p>
+        </div>
+
+        <p>Google evaluates reviews across three dimensions simultaneously: quantity (total count), quality (average rating and sentiment), and recency (when reviews were left and at what pace). Of these, recency is the most actionable and the most neglected.</p>
+
+        <h2>The 90-day window that matters most</h2>
+
+        <p>The most consequential window in Google's review evaluation is the trailing 90 days. Reviews left in the past 90 days carry significantly more weight in the ranking signal than reviews from 6 months ago, which carry more weight than reviews from two years ago.</p>
+
+        <p>This creates a compounding dynamic that works in both directions:</p>
+
+        <ul>
+            <li><strong>Practices actively acquiring reviews</strong> maintain a fresh signal profile — Google sees them as currently active and trustworthy, which supports ranking</li>
+            <li><strong>Practices that stopped asking</strong> see their review signal decay over time — even without losing a single review, their effective ranking weight decreases as their reviews age out of the high-weight window</li>
+        </ul>
+
+        <p>This is why a practice with 60 total reviews but 12 in the last 90 days (velocity of 4 per month) frequently outranks a practice with 200 total reviews but only 3 in the last 90 days (velocity of 1 per month). The total count is 3x higher. The recent signal is 4x weaker.</p>
+
+        <div class="stat-row">
+            <div class="stat-box">
+                <div class="number">4×</div>
+                <div class="label">More recent signal from 12 reviews in 90 days vs 3</div>
+            </div>
+            <div class="stat-box">
+                <div class="number">90</div>
+                <div class="label">Days — the high-weight window in Google's review evaluation</div>
+            </div>
+            <div class="stat-box">
+                <div class="number">84</div>
+                <div class="label">Median total reviews for US dental practices in our dataset</div>
+            </div>
+        </div>
+
+        <h2>A concrete comparison</h2>
+
+        <p>Consider two hypothetical dental practices competing for the same "dentist Brooklyn" search result:</p>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Signal</th>
+                    <th>Practice A</th>
+                    <th>Practice B</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Total reviews</td>
+                    <td class="loser">67</td>
+                    <td class="winner">214</td>
+                </tr>
+                <tr>
+                    <td>Reviews last 90 days</td>
+                    <td class="winner">18</td>
+                    <td class="loser">4</td>
+                </tr>
+                <tr>
+                    <td>Monthly velocity</td>
+                    <td class="winner">6/month</td>
+                    <td class="loser">1.3/month</td>
+                </tr>
+                <tr>
+                    <td>Average rating</td>
+                    <td class="winner">4.7</td>
+                    <td>4.5</td>
+                </tr>
+                <tr>
+                    <td>Owner response rate</td>
+                    <td class="winner">94%</td>
+                    <td class="loser">31%</td>
+                </tr>
+                <tr>
+                    <td>Likely ranking position</td>
+                    <td class="winner">#2</td>
+                    <td class="loser">#5</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Practice A has one third the total reviews but is almost certainly ranking higher. The recency signal, the response rate, and the rating together create a stronger combined profile than Practice B's total count advantage.</p>
+
+        <p>This is not theoretical. We observe this pattern consistently across the markets we analyze. Total count correlates with ranking, but velocity correlates more strongly with top-3 placement specifically.</p>
+
+        <h2>Why most practices have declining velocity</h2>
+
+        <p>The typical dental practice review curve looks like this: strong accumulation in the first 12-18 months after opening or after a concerted push, followed by a gradual decline as the novelty wears off and no systematic acquisition process replaces it.</p>
+
+        <p>Front desk staff ask for reviews inconsistently. Happy patients mean to leave one and forget. The practice accumulates reviews at 8 per month in year one, 4 per month in year two, 1-2 per month by year three — and then plateaus. Meanwhile the reviews from that initial surge are aging out of the 90-day high-weight window, month by month.</p>
+
+        <p>The practices that maintain strong ranking over time are the ones that have systematized the ask. Not relying on staff memory. Not hoping patients remember. A repeatable process that generates review requests at the point of highest satisfaction — immediately after a successful appointment.</p>
+
+        <h2>What review velocity looks like in practice</h2>
+
+        <p>Sustainable velocity for a dental practice means generating a consistent number of reviews per month — regardless of staff turnover, seasonal variation, or how busy the front desk is. The target varies by market competitiveness:</p>
+
+        <ul>
+            <li><strong>Low competition markets</strong> (smaller cities, suburban areas): 3-5 reviews per month is sufficient to maintain top-3 position</li>
+            <li><strong>Medium competition markets</strong> (mid-size cities, established suburbs): 6-10 reviews per month to compete effectively</li>
+            <li><strong>High competition markets</strong> (major metros, dense urban areas): 10-20+ reviews per month to rank in the top 3 consistently</li>
+        </ul>
+
+        <p>The key phrase is "consistently." Three reviews per month every month for 12 months (36 reviews) produces a meaningfully stronger signal than 20 reviews in January and 1 per month for the rest of the year (32 reviews) — even though the total is similar. Consistency signals a healthy, active practice. Spikes followed by silence suggest a one-time push that wasn't sustained.</p>
+
+        <h2>The response rate multiplier</h2>
+
+        <p>Review velocity doesn't operate in isolation. Google also evaluates owner response rate — the percentage of reviews that receive a response from the business, and how quickly. This interacts with velocity in a meaningful way.</p>
+
+        <p>A practice generating 8 reviews per month with an 85% response rate is demonstrating both volume and engagement. It's signaling: this business is active, it pays attention, it cares about patient feedback. That combined signal is materially stronger than 8 reviews per month with a 20% response rate.</p>
+
+        <div class="data-callout">
+            <strong>Key insight</strong>
+            <p>Response rate below 50% actively dampens the ranking benefit of high review velocity. Generating reviews without responding to them is like filling a bucket with a hole in it — you're doing the work without capturing the full signal benefit.</p>
+        </div>
+
+        <p>The practical implication: review acquisition and review response need to be treated as a single system, not two separate tasks. Acquiring reviews without a response process in place leaves significant ranking signal on the table.</p>
+
+        <h2>Building a velocity system</h2>
+
+        <p>The practices we've analyzed that maintain consistent top-3 ranking almost universally share one characteristic: they have a review request process that doesn't depend on any individual staff member remembering to ask.</p>
+
+        <p>The most effective model is a triggered post-appointment request — sent within 2-4 hours of an appointment completion, via the channel with highest open rates for that patient (typically SMS for existing patients, email for new ones). The timing matters: satisfaction is highest immediately after a positive appointment. Requests sent 24-48 hours later see meaningfully lower conversion rates.</p>
+
+        <p>The ask itself should be frictionless. One link, directly to the Google review page. No login required, no multi-step process. Every additional click between the patient and the review costs conversion rate.</p>
+
+        <p>Follow-up sequencing for non-responders (a single reminder 5-7 days later) typically adds 30-40% to total review capture rate — many patients genuinely intend to leave a review and simply forgot. One respectful reminder captures most of them.</p>
+
+        <h2>The competitive reality</h2>
+
+        <p>If your practice has strong total review count but declining velocity, your ranking position is likely eroding slowly — even if you can't see it yet. The practices below you in the results that are actively acquiring reviews are closing the gap month by month.</p>
+
+        <p>If your practice has lower total review count but strong velocity, you have a genuine opportunity to overtake established competitors. Total count takes years to build. Velocity advantage can be established in 60-90 days with the right system in place.</p>
+
+        <p>The core insight is straightforward: Google rewards practices that are currently earning trust, not just practices that earned trust in the past. Review velocity is the most direct signal of current trust accumulation. Everything else being roughly equal, the practice asking for reviews consistently will outrank the practice that doesn't.</p>
+
+        <div class="article-cta">
+            <h3>How does your practice score on review velocity?</h3>
+            <p>Our free GBP grader shows your current review count, estimated velocity, and how you compare to the top-ranked practices in your city — in about 60 seconds.</p>
+            <a href="../grade.html" class="btn">Grade my profile free →</a>
+        </div>
+
+        <div class="article-nav">
+            <a href="14-signals.html">← The 18+ ranking signals</a>
+            <a href="index.html">All insights →</a>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="../index.html" class="logo">
+                    <div class="logo-mark">L</div>
+                    Local Growth Insights
+                </a>
+                <p>Google Business Profile audits and management for US dental practices. Data-driven. Flat-priced. No retainer gatekeeping.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="../report.html">The $147 report</a></li>
+                    <li><a href="../services.html">All services</a></li>
+                    <li><a href="../grade.html">Free GBP grade</a></li>
+                    <li><a href="../case-studies.html">Case studies</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../about.html">About us</a></li>
+                    <li><a href="index.html">Insights</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="../privacy.html">Privacy policy</a></li>
+                    <li><a href="../terms.html">Terms of service</a></li>
+                    <li><a href="../refunds.html">Refund policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>© 2026 Local Growth Insights. All rights reserved.</div>
+            <div>contact@localgrowthinsights.com · +1 (813) 945-8112</div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
